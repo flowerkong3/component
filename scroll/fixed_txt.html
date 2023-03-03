@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    /* body {height:10000px} */
+    .fixed-txt {
+			position:fixed; 
+			top:0; left:0;
+			width:100%; height:100%;
+			font-size: 7vw;
+    }
+    .fixed-txt p {
+			position:absolute; top:50%; left:50%;
+			transform: translate(-50%,-50%); 
+			opacity:0;
+			transition: all 0.3s;
+		}
+ 
+		.fixed-txt .t {opacity:0;}
+		.fixed-txt .t.active {
+			margin-top: -10px;
+			opacity:1;
+		}
+		.fixed-txt .t.active .deco--rotate {
+			display:inline-block;
+			transform: rotate(45deg);
+			transition-delay: .3s;
+			transition-duration: .3s;
+		}
+		.fixed-txt .t.active .deco--scale {
+			display:inline-block;
+			transition-delay: .3s;
+			transition-duration: .3s;
+			transform: rotateY(0deg) translate(0,0) scale(1.2);
+		}
+
+		.img-section {
+			z-index:100;
+			position: relative;
+      margin-top:8000px;
+      height:10000px; 
+      background:#222;
+    }
+
+		.img-wrap {overflow:hidden; width:500px; }
+		.img {transition: all 1s;}
+		
+
+  </style>
+</head>
+<body>
+  <section class="section scrollFixedText">
+  	<div class="container">
+  		<div class="fixed-txt">
+		    <p class="t1 t">안녕하세요😀</p>
+		    <p class="t2 t">반갑습니다<span class="deco--rotate">🖐</span></p>
+		    <p class="t3 t">민영입니다<span class="deco--scale">💖</span></p>
+		  </div>
+  	</div>
+  </section>
+
+  <section class="section img-section">
+		<div class="img-wrap">
+			<div class="img">
+				<img src="https://images.unsplash.com/photo-1615859131861-052f0641a60e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1289&q=80" alt="">
+			</div>
+		</div>
+	</section>
+	<script>
+
+		
+		document.addEventListener("scroll",function(e){
+			let scrollTop = 0;
+			scrollTop = window.scrollY;
+			
+			fixedText();
+			transformImg();
+			
+			function fixedText(){
+				
+				let t1 = document.querySelector(".fixed-txt .t1");
+				let t2 = document.querySelector(".fixed-txt .t2");
+				let t3 = document.querySelector(".fixed-txt .t3");
+				let fixedTxt = document.querySelector(".fixed-txt");
+				fixedTxtHeight = fixedTxt.offsetHeight;
+
+				if(scrollTop > fixedTxtHeight / 3){
+					t1.classList.add("active");
+				}else {
+					t1.classList.remove("active");
+				};
+
+				if(scrollTop > fixedTxtHeight / .5){
+					t2.classList.add("active");
+					t1.classList.remove("active");
+				}else {
+					t2.classList.remove("active");
+				};
+
+				if(scrollTop > fixedTxtHeight / .3){
+					t3.classList.add("active");
+					t2.classList.remove("active");
+					t1.classList.remove("active");
+				}else {
+					t3.classList.remove("active");
+				};
+			};
+
+			function transformImg(){
+				let imgSection = document.querySelector(".img-section")
+				let imgWrap = document.querySelector(".img-wrap");
+				let img = document.querySelector(".img");
+
+				let wH = window.innerHeight;
+
+				let imgSectionTop = imgSection.offsetTop;
+				
+				if(scrollTop > imgSectionTop - 500){
+					img.style.transform = "translate(" + - wH *.3 + "px , 0)";
+				}else {
+					img.style.transform = "translate(0 , 0)";
+				}
+				
+				// console.log(wH *.2)
+			}
+
+			
+		})
+	</script>
+</body>
+</html>
