@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>FAQ</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<style>
+		/* Fonts */
+		@font-face {
+			font-family: 'NeoDunggeunmoPro-Regular';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+			font-weight: normal;
+			font-style: normal;
+		}
+			@font-face {
+			font-family: 'Pretendard-Regular';
+			src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		:root {
+			--color-pink : salmon;
+			--color-green : yellowgreen;
+			--color-white1 : beige;
+			--color-black : #000;
+			--font1-neo: 'NeoDunggeunmoPro-Regular';
+			--font2-pre : 'Pretendard-Regular';
+		}
+		/* Reset */
+		* {padding:0; margin:0; list-style:none; box-sizing:border-box}
+		body {
+			font-family: var(--font2-pre);
+			padding:20px;
+			margin:0 auto;
+			width:500px;
+			line-height:1.5;
+		}
+		button {
+			font-family: var(--font2-pre);
+		}
+		button {
+			border:none; 
+			background:transparent;
+			cursor:pointer;
+		}
+		/* Common */
+		.h2 {
+			text-align:center;
+			color: var(--color-green);
+			font-size:50px;
+		}
+		.h3 {
+			text-align: center;
+		}
+		/* Layout */
+		.faq {
+			margin:0 auto;
+			width:500px; 
+			text-align:center;
+			border: 3px solid var(--color-green);
+			font-family: var(--font1-neo);
+		}
+		.faq button {font-family: var(--font1-neo);}
+		.faq li ~ li {border-top:3px solid var(--color-green)}
+		.faq__question {
+			display:block;
+			width:100%;
+			padding:10px;
+			font-size:20px;
+			transition:all 0.3s;
+		}
+		.faq__question:hover {
+			background:var(--color-green);
+		}
+		.faq__question.active{
+			background:var(--color-green);
+		}
+		.faq__answer {
+			display:none;
+			padding:20px;
+			font-size:20px;
+			background:var(--color-white1);
+		}
+
+		/* btn */
+		.btn-more {
+			position:relative;
+			display:inline-block;
+			padding:5px 10px;
+			background:var(--color-black);
+			color:var(--color-white1);
+			border-radius: 5px;
+		}
+		.btn-more::after {
+			content:"";
+			display:inline-block;
+			padding:2px;
+			margin:0 0 0 5px;
+			border:solid var(--color-white1);
+			vertical-align: 1px;
+			transform: rotate(-45deg);
+		}
+		.btn-more.arrow-right::after {
+			border-width: 0 1px 1px 0;
+		}
+		.btn-more.arrow-left {
+			padding-left: 30px;
+		}
+		.btn-more.arrow-left::after {
+			border-width: 1px 0 0 1px;
+			position: relative;
+			left: -111%;
+		}
+		.btn-more.arrow-top::after {
+			border-width: 1px 1px 0 0;
+		}
+		.btn-more.arrow-bottom::after {
+			border-width: 0 0 1px 1px;
+		}
+
+		.btn-more.ani1-ltr {
+			overflow: hidden;
+			z-index:10;
+		}
+		.btn-more.ani1-ltr::before {
+			content: "";
+			position:absolute;
+			width: 0;
+			height: 100%;
+			top:0;
+			left:0;
+			background:var(--color-pink);
+		}
+		.btn-more.ani1-ltr:hover::before {
+			width:100%;
+			transition: all 0.5s;
+		}
+		.btn__text {
+			z-index:1;
+			position:relative;
+		}
+		.btn-more.ani2-arrow-up::after {
+			position:relative;
+			top: 0;
+			transition: all 0.3s;
+		}
+		.btn-more.ani2-arrow-up:hover::after {
+			top: -5px;
+		}
+
+	</style>
+		<h2 class="h2">FAQ</h2>
+		<h3 class="h3">faq_type1 : 클릭하면 나머지 닫힘</h3>
+		<section class="faq-type1">
+			<ul class="faq">
+				<li class="faq__list">
+					<button class="faq-type1__btn faq__question">질문1</button>
+					<div class="faq-type1__content faq__answer">
+						Neo둥근모 글꼴 파일과 원본 비트맵 데이터 및 글꼴 파일을 생성하는 프로그램과 그 소스 코드는 SIL Open Font License 1.1 하에 배포됩니다. SIL Open Font License 1.1의 전체 내용은 README.md에 수록되어 있습니다.
+					</div>
+				</li>
+				<li class="faq__list">
+					<button class="faq-type1__btn faq__question">질문2</button>
+					<div class="faq-type1__content faq__answer">답변2</div>
+				</li>
+				<li class="faq__list">
+					<button class="faq-type1__btn faq__question">질문3</button>
+					<div class="faq-type1__content faq__answer">답변3</div>
+				</li>
+			</ul>
+		</section>
+		<br><br>
+		<h3 class="h3">faq-type2 : 첫번째 열림, 클릭해도 나머지 열린 상태</h3>
+		<section class="faq-type2">
+			<ul class="faq">
+				<li class="faq__list show">
+					<button class="faq-type2__btn faq__question active">질문1</button>
+					<div class="faq-type2__content faq__answer">
+						Neo둥근모 글꼴 파일과 원본 비트맵 데이터 및 글꼴 파일을 생성하는 프로그램과 그 소스 코드는 SIL Open Font License 1.1 하에 배포됩니다. SIL Open Font License 1.1의 전체 내용은 README.md에 수록되어 있습니다.
+					</div>
+				</li>
+				<li class="faq__list">
+					<button class="faq-type2__btn faq__question">질문2</button>
+					<div class="faq-type2__content faq__answer">답변2</div>
+				</li>
+				<li class="faq__list">
+					<button class="faq-type2__btn faq__question">질문3</button>
+					<div class="faq-type2__content faq__answer">답변3</div>
+				</li>
+			</ul>
+		</section>
+
+		<h2 class="h2">BUTTON</h2>
+		<h3 class="h3">btn-more</h3>
+		<button class="btn-more arrow-right ani1-ltr"><span class="btn__text">btn-more</span></button>
+		<button class="btn-more arrow-left">btn-more</button>
+		<button class="btn-more arrow-top ani2-arrow-up">btn-more</button>
+		<button class="btn-more arrow-bottom">btn-more</button>
+
+		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
+
+	<script>
+		$(document).ready(function(){
+			// faq_type1
+			var faq_type1_target1 = $('.faq-type1__btn');
+			$('.faq-type1__btn').click(function(){
+				$(this).siblings().slideToggle(200);
+				$(this).parent().siblings().children('.faq-type1__content').slideUp(200);
+				$(this).toggleClass('active');
+				// 클릭한 요소를 제외한 나머지 형제요소에 active 해제 
+				// 즉, $(this)를 제외한 나머지
+				faq_type1_target1.not($(this)).removeClass('active');
+			})
+
+			// faq_type2
+			// 첫번째 활성화
+			var faq_type2_btn1 = $('.faq-type2__btn').eq(0);
+			var faq_type2_content1 = $('.faq-type2__content').eq(0);
+			faq_type2_btn1.addClass('active');
+			faq_type2_content1.css('display','block');
+			
+			$('.faq-type2__btn').click(function(){
+				$(this).siblings().slideToggle(200);
+				$(this).toggleClass('active');
+			})
+
+
+
+		})
+	</script>
+
+</body>
+
+</html>
