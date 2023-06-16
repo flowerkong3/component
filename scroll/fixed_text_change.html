@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>fixed text color change</title>
+	<!-- CSS -->
+	<style>
+		:root {
+			--fixed-height : 10000px;
+		}
+		* {margin:0; padding:0;}
+		.fixed-section {
+			position:fixed;
+			top:0;
+			left:0;
+			width:100%;
+			height: var(--fixed-height);
+			background: #000;
+		}
+		.fixed-text-wrap {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.fixed-text {
+			text-align:center;
+			font-size:6vw;
+			line-height: 1.5;
+			font-weight:bold;
+			color: #111;
+			transition:all 0.3s;
+		}
+		.fixed-text.active {
+			color: #eee;
+		}
+		.dumi {
+			position:relative;
+			top: var(--fixed-height);
+			left: 0;
+			height:5000px;
+			background:#fff;
+		}
+	</style>
+</head>
+<!-- HTML -->
+<body>
+	<section class="fixed-section">
+		<div class="fixed-text-wrap">
+			<div class="inner center">
+				<p class="fixed-text fixed-text-01">스크롤 내리면</p>
+				<p class="fixed-text fixed-text-02">글자색상이</p>
+				<p class="fixed-text fixed-text-03">한줄씩</p>
+				<p class="fixed-text fixed-text-04">변경됩니다</p>
+			</div>
+		</d>
+	</section>
+	<section class="dumi">dumi</section>
+	<!-- JS -->
+	<script>
+		let scrollTop = 0;
+		const fixedSec = document.querySelector(".fixed-section");
+		const fixedSecHeight = fixedSec.clientHeight;
+		console.log(fixedSecHeight);
+		const fixTxt01  = document.querySelector(".fixed-text-01");
+		const fixTxt02  = document.querySelector(".fixed-text-02");
+		const fixTxt03  = document.querySelector(".fixed-text-03");
+		const fixTxt04  = document.querySelector(".fixed-text-04");
+
+		document.addEventListener("scroll",function(e){
+			scrollTop = window.scrollY;
+			console.log(scrollTop);
+
+			if(scrollTop > fixedSecHeight / 8) {
+				fixTxt01.classList.add("active");
+			}else {
+				fixTxt01.classList.remove("active");
+			};
+			if(scrollTop > fixedSecHeight / 4) {
+				fixTxt02.classList.add("active");
+			}else {
+				fixTxt02.classList.remove("active");
+			};
+			if(scrollTop > fixedSecHeight / 3) {
+				fixTxt03.classList.add("active");
+			}else {
+				fixTxt03.classList.remove("active");
+			};
+			if(scrollTop > fixedSecHeight / 2) {
+				fixTxt04.classList.add("active");
+			}else {
+				fixTxt04.classList.remove("active");
+			};
+
+		})
+
+		
+
+
+
+	</script>
+</body>
+</html>
