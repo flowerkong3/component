@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>on off btn</title>
+	<style>
+		.on-off-btn {
+			display:block;
+			position:relative;
+			background:transparent;
+			width:60px;
+			height: 30px;
+			border-radius: 50px;
+			color: #000;
+			font-size: 8px;
+		}
+		.on-off-btn::before {
+			content: "on";
+			position: absolute;
+			top:3px;
+			left:3px;
+			width: 25px;
+			height: 20px;
+			border-radius: 50px;
+			background: #000;
+			color: #fff;
+			font-size: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s;
+		}
+		.on-off-btn.active {
+			color: #fff;
+			border: 1px solid #fff;
+		}
+		.on-off-btn.active::before {
+			content: "off";
+			left: 29px;
+			background: #ccc;
+			color: #000;
+		}
+		body.active{
+			background: #000;
+			transition: all 0.3s;
+		}
+	</style>
+</head>
+<body id="body">
+	<button class="on-off-btn">on &nbsp;&nbsp; off</button>
+	<script>
+		const onOffBtn = document.querySelector(".on-off-btn");
+		onOffBtn.addEventListener("click",function(){
+			onOffBtn.classList.toggle("active");
+			body.classList.toggle("active");
+		})
+	</script>
+</body>
+</html>
