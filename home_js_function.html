@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scroll Top Button</title>
+	<style>
+
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+		body {
+			font-family: 'Montserrat', sans-serif;
+		}
+
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			list-style:none;
+			color: #222;
+			text-decoration: none;
+		}
+		section {
+			height: 100vh;
+			background: #ccc;
+			font-size: 16vw;
+		}
+		.section-1{background: #111;}
+		.section-2{background: #333;}
+		.section-3{background: #555;}
+		.top-btn {
+			position: fixed;
+			bottom: 5%;
+			right: 5%;
+			background: #fff;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			cursor: pointer;
+			font-size: 20px;
+			font-weight: bold;
+			opacity:0;
+			visibility: hidden;
+			transition: all 0.3s;
+		}
+		.top-btn.active {
+			opacity:1;
+			visibility: visible;
+		}
+		.gnb {
+			position: fixed;
+			width:100%;
+			/* height:100px; */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 30px;
+			font-size: 4vw;
+			background: greenyellow;
+			color: #fff;
+		}
+		.gnb a {
+			display:block;
+			padding:30px 0;
+			font-size: 20px;
+		}
+		.menu.active a{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<main class="main">
+		<ul class="gnb">
+			<li id="menu1" class="menu menu-1"><a href="javascript:void(0)">section1</a></li>
+			<li id="menu2" class="menu menu-2"><a href="javascript:void(0)">section2</a></li>
+			<li id="menu3" class="menu menu-3"><a href="javascript:void(0)">section3</a></li>
+			<li id="menu4" class="menu menu-4"><a href="javascript:void(0)">section4</a></li>
+		</ul>
+		<button class="top-btn" onclick="topBtn1()">TOP</button>
+		<section id="sec1" class="section section-1">section1</section>
+		<section id="sec2" class="section section-2">section2</section>
+		<section id="sec3" class="section section-3">section3</section>
+		<section id="sec4" class="section section-4">section4</section>
+		<div>11111</div>
+	</main class="main">
+
+
+	<script>
+		let scrollTop = 0;
+		let delta = 200
+		const topBtn = document.querySelector(".top-btn");
+		const secTop1 = document.querySelector(".section-1").offsetTop;
+		const secTop2 = document.querySelector(".section-2").offsetTop;
+		const secTop3 = document.querySelector(".section-3").offsetTop;
+		const secTop4 = document.querySelector(".section-4").offsetTop;
+		const gnbH = document.querySelector(".gnb").clientHeight;
+
+
+		// topBtn 
+		function topBtn1(){
+			window.scrollTo({
+				top:0,
+				left:0,
+				// behavior:"smooth",
+			})
+		}
+
+		// TabMenu Click| add Color, 나머지 remove Color
+		// const menu = document.querySelectorAll(".menu");
+		// 	for(var i = 0; i < menu.length; i++){
+		// 		menu[i].addEventListener("click",function(e){
+		// 			e.preventDefault();
+		// 			for(var x = 0; x < menu.length; x++){
+		// 				menu[x].classList.remove("active");
+		// 			};
+		// 			setTimeout(function(){
+		// 				this.classList.add("active");
+		// 			},100);
+		// 		});
+		// 	};
+
+	
+		
+
+		// gnb 메뉴클릭 | 해당섹션으로 이동
+		menu1.addEventListener("click",function(e){
+			setTimeout(secTop1,0);
+			function secTop1(){
+				window.scrollTo({
+				top:secTop1 - gnbH,
+				behavior:"smooth",
+				});
+			}
+		});
+		menu2.addEventListener("click",function(e){
+				window.scrollTo({
+				top:secTop2 - gnbH,
+				behavior:"smooth",
+			});
+		});
+		menu3.addEventListener("click",function(e){
+				window.scrollTo({
+				top:secTop3 - gnbH,
+				behavior:"smooth",
+			});
+		});
+		menu4.addEventListener("click",function(e){
+				window.scrollTo({
+				top:secTop4 - gnbH,
+				behavior:"smooth",
+			});
+		});
+
+
+		window.addEventListener("scroll",function(){
+			// topBtn hide show
+			scrollTop = window.scrollY;
+			if(scrollTop > delta){
+				topBtn.classList.add("active");
+			}else {
+				topBtn.classList.remove("active");
+			};
+
+			sectionMove();
+			
+
+
+		// if(window.screen.width < 480){
+		// 	window.location.reload();
+		// 	menu4.classList.add("active")
+		// }
+		});
+
+			
+			
+		
+
+// 해당섹션으로 스크롤 내리면 gnb 네비색 변경
+		function sectionMove(){
+			if(scrollTop > secTop1 - gnbH){
+				menu1.classList.add("active");
+				menu2.classList.remove("active");
+				menu3.classList.remove("active");
+			}else {
+				menu1.classList.add("active");
+				menu2.classList.remove("active");
+				menu3.classList.remove("active");
+			};
+			if(scrollTop > secTop2 - gnbH - 5){
+				menu2.classList.add("active");
+				menu1.classList.remove("active");
+				menu3.classList.remove("active");
+			}else {
+				menu1.classList.add("active");
+				menu2.classList.remove("active");
+				menu3.classList.remove("active");
+			};
+			if(scrollTop > secTop3 - gnbH - 5){
+				menu3.classList.add("active");
+				menu2.classList.remove("active");
+				menu1.classList.remove("active");
+			}else {
+				menu3.classList.remove("active");
+			};
+			if(scrollTop > secTop4 - gnbH - 5){
+				menu4.classList.add("active");
+				menu3.classList.remove("active");
+				menu2.classList.remove("active");
+				menu1.classList.remove("active");
+			}else {
+				menu4.classList.remove("active");
+			};
+		};
+		
+
+
+		
+		// 모바일버전에서 1번만 새로고침
+		if(window.screen.width < 480){	
+			window.addEventListener("resize",function(){
+				if(location.href.indexOf('#reload') == -1)
+				location.href += '#reload'
+			});
+
+		};
+
+
+	</script>
+</body>
+</html>
