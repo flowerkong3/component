@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Swiper CDN -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+	
+	<!-- jQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/home.css">
+
+	<!-- JS -->
+	<!-- <script defer src="./js/home.js"></script> -->
+	<script defer src="./js/components/header1.js"></script>
+	<script defer src="./js/components/top_btn.js"></script>
+	<!-- <script defer src="./js/components/header.js"></script> -->
+	<script defer src="./js/components/hamburger.js"></script>
+	<title>META_MIU</title>
+</head>
+<body>
+	<div class="wrap home">
+		
+		<button class="top-btn" onclick="topBtn1()"><span class="hide">scroll TOP button</span></button>
+
+		<header class="header">
+			<div class="header__inner flex">
+				<h1><a href="./index.html" class="logo"><img src="./images/logo.png" alt="META MIU"></a></h1>
+				<!-- <nav class="gnb nav-color-change">
+					<ul>
+						<li><a href="#keyvisual" class="color"><span class="blind">home</span></a></li>
+						<li><a href="#about" class="color">ABOUT</a></li>
+						<li><a href="#game">GAME</a></li>
+						<li><a href="#nft">NFT</a></li>
+						<li><a href="#token">Token</a></li>
+						<li><a href="#ecosystem">Ecosystem</a></li>
+						<li><a href="#roadmap">Roadmap</a></li>
+					</ul>
+				</nav> -->
+				<nav class="gnb nav-color-change">
+					<!-- <ul>
+						<li><a href="#keyvisual" class="color"></a></li>
+						<li><a href="#about">ABOUT</a></li>
+						<li><a href="#game">GAME</a></li>
+						<li><a href="#nft">NFT</a></li>
+						<li><a href="#token">Token</a></li>
+						<li><a href="#ecosystem">Ecosystem</a></li>
+						<li><a href="#roadmap">Roadmap</a></li>
+						<li><a href="https://gravitera.gitbook.io/khia" target="_blank">Docs</a></li>
+					</ul> -->
+					<ul>
+						<li id="menu1" class=""><a href="javascript:void(0)" onclick="scrollMove(1)"><span class="hide">home</span></a></li>
+						<li id="menu2" class=""><a href="javascript:void(0)" onclick="scrollMove(2)">Universe</a></li>
+						<li id="menu3" class=""><a href="javascript:void(0)" onclick="scrollMove(3)">Story</a></li>
+						<li id="menu4" class=""><a href="javascript:void(0)" onclick="scrollMove(4)">About</a></li>
+						<li id="menu5" class=""><a href="javascript:void(0)" onclick="scrollMove(5)">Features</a></li>
+					</ul>
+				</nav>
+				<button class="hamburger" onclick="toggleHamburger()">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</header>
+			<main class="main">
+				<div class="container">
+					<div class="visual" id="section1">
+						<div class="visual__img">
+							<img src="./images/visual.png" alt="">
+						</div>
+						<div class="visual__txt">
+							One and only metaverse idol, MIU
+						</div>
+						<div class="mouse-scroll">
+							<img src="./images/ico_mouse.png" alt="">
+							Scroll to Explore
+						</div>
+					</div>
+					<section class="section section-1 section-fellaz" id="section2">
+						<div class="content-wrap flex">
+							<div class="content content-info">
+								<div class="txt-type1">
+									<h2 class="txt-type1__title">
+										Fellaz Universe
+									</h2>
+									<p class="txt-type1__subtitle">The universe that is built with IPs processed by Fellaz.</p>
+									<p class="txt-type1__desc">
+										Fellaz aims members to expand their entertainment experience beyond the real world and into the metaverse. Fellaz universe and the IPs within it work as a link that connects the real world with the metaverse. The first project to introduce of the Fellaz universe is ‘Meta Miu’, a community-centered metaverse idol project.
+									</p>
+								</div>
+								<button class="btn btn-link mt50">
+									Go to Fellaz Home
+									<img src="./images/arrow_link.png" alt="">
+								</button>
+							</div>
+							<div class="content content-thumb">
+								<video muted="" autoplay="" loop="" playsinline="" class="video">
+									<source src="./images/video_fellaz.mp4" type="video/mp4">
+								</video>
+							</div>
+						</div> 
+					</section>
+					<section class="section section-2 section-stroy" id="section3">
+						<div class="content content-stroy">
+							<div class="txt-type1">
+								<h2 class="txt-type1__title">
+									Story of Meta MIU
+								</h2>
+							</div>
+							<ul class="list flex mt60">
+								<li><img src="./images/img_story_01.png" alt=""></li>
+								<li><img src="./images/img_story_02.png" alt=""></li>
+								<li><img src="./images/img_story_03.png" alt=""></li>
+								<li><img src="./images/img_story_04.png" alt=""></li>
+								<li><img src="./images/img_story_05.png" alt=""></li>
+							</ul>
+							<div class="txt-type1 mt60">
+								<div class="txt-type1__desc">
+									<p>The girl named Miu, who dreams of becoming an idol. But she goes through a rough time achieving her goal which made her discouraged and consider giving up her dream.</p>
+									<p>One day, she encounters a cat that resembles Miro, a cat she had left behind in her childhood home 5 years ago. So, she decides to follow it. Miro leads Miu to pass through unfamiliar alleys and Miu finds herself in the world of the metaverse.</p>
+									<p>In this metaverse world, Felix, a washed-up producer who has been observing Miu, becomes enamored by her potential, so he proposes that she participates in an audition program for metaverse idol.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="section section-3 section-about" id="section4">
+						<div class="content-wrap flex">
+							<div class="content content-info">
+								<div class="txt-type1">
+									<h2 class="txt-type1__title">
+										About Meta Miu
+									</h2>
+									<p class="txt-type1__subtitle">
+										Meta Miu is the 1st project of the Fellaz Universe. 
+									</p>
+									<p class="txt-type1__desc">
+										Fellaz Pass holders can join the journey of Meta Miu’s idol debut with Felix(BAYC#8169) who is the chief producer of the Fellaz universe. 
+										Holders are not just a supporter but also a sub-producer for her to become a successful idol in the metaverse.
+									</p>
+								</div>
+								<div class="txt-type1 mt100">
+									<p class="txt-type1__subtitle">
+										Key Points
+									</p>
+									<div class="txt-type1__desc">
+										<ul>
+											<li>Meta Miu project will be driven with the Fellaz community.</li>
+											<li>Fellaz Pass holders are the core members of the project, and their opinions will be reflected based on DAO.</li>
+											<li>Holders can participate in the process of releasing an album or song, choosing an outfit of the debut stage, and more activities to make Meta Miu into a metaverse idol.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="content content-thumb">
+								<img src="./images/img_about.png" alt="">
+							</div>
+						</div> 
+					</section>
+					<section class="section section-4 section-features" id="section5">
+						<div class="txt-type1">
+							<h2 class="txt-type1__title">
+								Features
+							</h2>
+						</div>
+						<ul class="section-features__list flex mt60">
+							<li class="block">
+								<div class="ico"><img src="./images/ico_features_01.png" alt=""></div>
+								<div class="txt">
+									<strong class="txt__bold">Collect</strong>
+									<ul class="txt__list">
+										<li>The artwork of the Meta MIU NFTs have quality that stimulates followers to hold and keep on collecting.</li>
+										<li>NFTs can be earned through various on/off-line events for free. </li>
+										<li>Exclusive rewards will be given to the holders occasionally.</li>
+									</div>
+									</p>
+							</li>
+							<li class="block">
+								<div class="ico"><img src="./images/ico_features_01.png" alt=""></div>
+								<div class="txt">
+									<strong class="txt__bold">Synthesis</strong>
+									<ul class="txt__list">
+										<li>The artwork of the Meta MIU NFTs have quality that stimulates followers to hold and keep on collecting.</li>
+										<li>NFTs can be earned through various on/off-line events for free. </li>
+										<li>Exclusive rewards will be given to the holders occasionally.</li>
+									</div>
+									</p>
+							</li>
+							<li class="block">
+								<div class="ico"><img src="./images/ico_features_01.png" alt=""></div>
+								<div class="txt">
+									<strong class="txt__bold">Participate</strong>
+									<ul class="txt__list">
+										<li>The artwork of the Meta MIU NFTs have quality that stimulates followers to hold and keep on collecting.</li>
+										<li>NFTs can be earned through various on/off-line events for free. </li>
+										<li>Exclusive rewards will be given to the holders occasionally.</li>
+									</div>
+									</p>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</main>
+			<footer class="footer">
+				<div class="footer__inner flex">
+					<img src="./images/logo.png" alt="META MIU" class="logo">
+					<div class="copyright">© Innocus Pte. Ltd. All rights reserved.</div>
+					<div class="contact">
+						<a href="mailto:social@fellaz.io">Contact</a>
+					</div>
+				</div>
+			</footer>
+	</div>
+	<script>
+		
+	</script>
+	</body>
+</html>
