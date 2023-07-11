@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>브런치 벤치마킹</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+		:root {
+			/* --cover-height : 70vh; */
+		}
+		* {
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+		body {
+			overflow-x: hidden;
+		}
+		.header {
+			z-index:999;
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:70px;
+			padding-left: 20px;
+			line-height: 70px;
+			transition: all 0.3s;
+		}
+		.header h1 {
+			color: #fff;
+			font-size:20px;
+		}
+		.progressWrap {
+			display: none;
+			z-index:200;
+			position:fixed;
+			top:70px;
+			left:0;
+			width:100%;
+			height: 30px;
+			background: #fff;
+			transition: all 0.3s;
+		}
+		.progress {
+			position:absolute;
+			top:0;
+			left:0;
+			width:0;
+			height: inherit;
+			/* height: 30px; */
+			background: #000;
+			transition: all 0.3s;
+		}
+		/* Add fixed */
+		.header.fixed {
+			position: fixed;
+			background: rgba(255,255,255,0.9);
+		}
+		.header.fixed h1 {
+			color: #000;
+		}
+		.header.fixed .progressWrap {
+			display: block;
+		}
+
+		.coverWrap {
+			position: fixed;
+			top: 0;
+			left:0;
+			width:100%;
+			/* height: var(--cover-height); */
+			/* height:100vh; */
+			background: url(https://images.unsplash.com/photo-1601388352547-2802c6f32eb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2563&q=80)no-repeat center center / cover;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		.dimd {
+			z-index:10;
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			background: rgba(0,0,0,0.5);
+		}
+		.coverTitle {
+			position:relative;
+			z-index:20;
+			color:#fff;
+		}
+		.coverTitle h2 {font-size:5vw;}
+		.coverTitle p {padding:20px 0 0; font-size:2vw;}
+	
+		.contentWrap {
+			position:relative;
+			width:100%;
+			z-index:100;
+			/* margin-top:var(--cover-height); */
+			background: #fff;
+		} 
+		.content {
+			margin: 0 auto;
+			padding: 0 40px 100px;
+			max-width: 1000px;
+			width: 100%;
+		}
+		.content h4 {
+			font-size:30px;
+			padding: 50px 0 0;
+			text-transform:capitalize;
+		}
+		.content p {
+			font-size:20px;
+			padding: 30px 0 0;
+		}
+
+		.btn-top {
+			display: none;
+			z-index:999;
+			position:fixed;
+			bottom:5%;
+			right:5%;
+			width:70px;
+			height:70px;
+			border-radius: 50%;
+			background: #000;
+			font-size: 30px;
+			transition: all 0.3s;
+		}
+		.btn-top.show {
+			display:block;
+		}
+		.ico-run {
+			/* z-index:999; */
+			/* position: fixed; */
+			/* width:100%;
+			height:50px;
+			top:5%;
+			left:0; */
+			font-size: 40px;
+			transition: all 0.3s;
+			width: 100%;
+			height: 30px;
+			background: tomato;
+		}
+		.ico-run span {
+			display:block;
+			width:40px;
+			transform: scaleX(-1);
+		}
+		.ico-run.show {
+			/* display:block; */
+		}
+	</style>
+</head>
+<body>
+	<button class="btn-top" onclick="btnTopFunc()">👍</button>
+	<header class="header">
+		<h1>BLOG</h1>
+		<div class="progressWrap">
+			<div class="ico-run"><span class="run">🏃‍♀️</span></div>
+			<div class="progress"></div>
+		</div>
+	</header>
+
+	<div class="coverWrap">
+		<div class="coverTitle">
+			<h2>TITLE</h2>
+			<p>SUB TITLE</p>
+		</div>
+		<div class="dimd"></div>
+	</div>
+	<div class="contentWrap">
+		<div class="content">
+			<h4>Lorem </h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>ipsum dolor sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>dolor sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>dolor sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>dolor sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+			<h4>sit amet.</h4>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo quis ratione totam ab iusto pariatur ut, iure excepturi aperiam animi, voluptate numquam, nobis harum. Corporis iusto vero labore saepe cum, dignissimos debitis qui ipsa rerum maiores illo facilis nam rem nobis, ab repellat deleniti assumenda aspernatur magnam delectus sit?
+			</p>
+		</div>
+	</div>
+
+	<script>
+		const header = document.querySelector(".header");
+		const progress = document.querySelector(".progress");
+		const progressWrap = document.querySelector(".progressWrap");
+		const coverTitle = document.querySelector(".coverTitle");
+		const coverWrap = document.querySelector(".coverWrap");
+		const dimd = document.querySelector(".dimd");
+		const contentWrap = document.querySelector(".contentWrap");
+		const btnTop = document.querySelector(".btn-top");
+		const icoRun = document.querySelector(".ico-run");
+
+		let scrollNum = 0;
+		let documentHeight = 0;
+		let coverWrapHeight = window.innerHeight / 1.3;
+		let num = 1;
+
+		coverWrap.style.height = coverWrapHeight + "px";
+		contentWrap.style.marginTop = coverWrapHeight + "px";
+
+		console.log(window.innerHeight); //현재보여지는 총높이
+		console.log(document.body.scrollHeight); //윈도우 총높이
+
+
+		window.addEventListener("scroll", () => {
+			scrollNum = window.scrollY;
+			documentHeight = document.body.scrollHeight - window.innerHeight + coverWrapHeight;
+			// scrollHeight가 margin을 못갖고 오기 때문에 coverWrap에 준 마진탑을 더해준다.
+
+
+			// per = Math.round((scrollNum / documentHeight) * 100);
+			// per = ((scrollNum / documentHeight) * 100).toFixed(0);
+			per = percent(scrollNum, documentHeight);
+			// console.log(per)
+			progress.style.width = per + "%";
+			// icoRun.style.width = per + "%";
+			icoRun.style.transform = `translateX(${per}%)`;
+
+			// console.log(contentWrap.getBoundingClientRect().top)
+			// console.log(coverWrap.clientHeight)
+
+			
+			if(scrollNum >= coverWrapHeight) { // 400이상이면 | 헤더영역이 나타남, 타이틀 이동 없음
+				// console.log(111111)
+				header.classList.add("fixed");
+				btnTop.classList.add("show");
+				// icoRun.classList.add("show");
+			}else { //400이하면 | 헤더영역 사라지고, 타이틀 이동함. 
+				header.classList.remove("fixed");
+				coverTitle.style.transform = `translateY(-${scrollNum / 7}px)`;
+				coverWrap.style.backgroundPosition = `center ${-scrollNum / 15}px`;
+				dimd.style.backgroundColor = `rgba(0,0,0, ${0.4 + scrollNum / 2000} )`;
+
+				// btnTop.classList.remove("show");
+				// icoRun.classList.remove("show");
+
+			};
+
+			// console.log(coverTitle)
+
+		});
+
+		const percent = (num, totalNum) => {
+			return ((num / totalNum) * 100).toFixed(0);
+		};
+
+		function btnTopFunc(){
+			scrollTo({
+				top:0,
+				left:0,
+				behavior:'smooth'
+			});
+		}
+
+
+
+	</script>
+
+</body>
+</html>
