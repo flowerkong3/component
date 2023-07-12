@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 잡고 움직이는 박스</title>
+	<style>
+		.box {
+			position:absolute;
+			top:5%;
+			left:5%;
+			width:100px;
+			height: 100px;
+			background: violet;
+			cursor:move;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+
+	</div>
+	<script>
+		const box = document.querySelector(".box");
+		let offsetX, offsetY;
+
+		const move = (e) => {
+			//update box position based on new cursor position
+			box.style.left = `${e.clientX - offsetX}px`; 
+			box.style.top = `${e.clientY - offsetY }px`; 
+		}
+
+		box.addEventListener("mousedown", (e) => {
+			//culculate the initial offset values
+			offsetX = e.clientX -  box.offsetLeft;
+			offsetY = e.clientY -  box.offsetTop;
+
+			document.addEventListener("mousemove", move);
+		});
+
+		document.addEventListener("mouseup", () => {
+			document.removeEventListener("mousemove", move);
+		});
+
+	</script>
+</body>
+</html>
