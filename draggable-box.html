@@ -43,18 +43,7 @@
 			document.removeEventListener("mousemove", move);
 		});
 
-		//mobile
-		box.addEventListener("touchmove", (e) => {
-			//culculate the initial offset values
-			offsetX = e.clientX -  box.offsetLeft;
-			offsetY = e.clientY -  box.offsetTop;
-
-			document.addEventListener("mousemove", move);
-		});
-
-		document.addEventListener("touchend", () => {
-			document.removeEventListener("mousemove", move);
-		});
+		
 
 
 	</script>
