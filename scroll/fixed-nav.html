@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크롤 내리면 고정탭</title>
+	<style>
+
+				@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+				:root {
+						--main-height :10000px
+				}
+				html {
+						scroll-behavior: smooth;
+				}
+				* {
+					margin: 0;
+					padding: 0;
+					list-style:none;
+					box-sizing: border-box;
+								font-family: 'Poppins', sans-serif;
+				}
+				a {
+					color: #fff;
+					text-decoration: none;
+				}
+				.wrap {
+					margin: 0 auto;
+					/* max-width: 800px;
+								width:100%; */
+				}
+				section {
+						position: relative;
+						text-align: center;
+						font-size: 5vw;
+						background: #000;
+				}
+				.section1 {
+						padding: 10% 0 0;
+						position:fixed;
+						top: 0;
+						left: 0;
+						width:100%;
+						height:var(--main-height);
+						color: #fff;
+						/* position:relative; */
+				
+				}
+				.section2 {
+						max-width: 800px;
+						width:100%;
+						margin-top: var(--main-height);
+						position:relative;
+						background: #555;
+						border-radius: 50px;
+						overflow: hidden;
+				}
+				.section3 {
+						height: 100vh;
+						background: #777;
+				}
+				.section4 {
+						height: 100vh;
+						background: #ccc;
+				}
+				.event-wrap {
+						/* padding-top: 80px; */
+						font-size: 30px;
+						text-align: center;
+				}
+				.event {padding-top: 100px; height:1500px; background: #222;}
+				.event:nth-child(odd) {background: tomato;}
+				.event:nth-child(even) {background: pink;}
+				.nav {
+								max-width: 800px;
+					position:absolute;
+					top:0;
+					left: 0;
+					width:100%;
+					display:flex;
+				}
+        .nav.fixed {
+            position: fixed;
+            margin: 0 auto;
+            max-width: 800px;
+            width: 100%;
+            /* left: 50%;
+            transform: translateX(-50%); */
+        }
+				.nav li {
+					width: 50%;
+					background: #222;
+					color: #ccc;
+					text-align: center;
+								transition: all 0.1s;
+				}
+				.nav li.on {
+					background: violet;
+				}
+						.nav li.on a {
+								font-weight: bold;
+						}
+				.nav li a {
+					display:block;
+					padding: 20px;
+					font-size: 2vw;
+				}
+        .section3 {
+            height:3000px;
+        }
+        .txt-change {
+            color: violet;
+        }
+        .card {
+            position:absolute;
+            left: 50%;
+            top:43vw;
+            margin-left: -25vw;
+            width:50vw;
+            height:2vw;
+            transform:rotateZ(0deg);
+            background: pink;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .gnb-wrap {
+            z-index:999;
+            position:fixed;
+            bottom: 0;
+            left: 0;
+            width:100%;
+            background: #fff;
+        }
+        .gnb {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 6000px;
+            /* justify-content: center; */
+            gap: 10px;
+            /* height: 100%; */
+            flex-wrap: nowrap;
+           
+        }
+        /* @media screen and (max-width:1600px) {
+            .gnb {width: 3000px;}
+        } */
+        @media (width < 1600px) {
+            .gnb {width: 3000px;}
+        }
+        /* @media screen and (max-width:800px) {
+            .gnb {width: 1500px;}
+        } */
+        @media (width < 800px) {
+            .gnb {width: 1500px;}
+        }
+        @media (width < 400px) {
+            .gnb {width: 800px;}
+        }
+        .gnb li {
+            height:70px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+        .gnb li a {
+            padding: 20px 0;
+            display:block;
+            color: #000;
+            font-size: 20px;
+        }
+        .gnb li.on {
+            background: #000;
+            border: 1px solid #fff;
+        }
+        .gnb li.on a {
+            color: #fff;
+
+        }
+        .btn-top {
+            z-index:1000;
+            width: 70px;
+            height:70px;
+            background: #fff;
+            border-radius: 50%;
+            position: fixed;
+            right: 3%;
+            bottom: 10%;
+						cursor: pointer;
+        }
+	</style>
+</head>
+<body>
+ <div class="wrap">
+    <button class="btn-top" onclick="btnTop()">top</button>
+    <nav class="gnb-wrap">
+        <ul class="gnb">
+            <li><a href="#section1" class="btn" onclick="gnbItem1()">sec1</a></li>
+            <li><a href="#section2" class="btn">sec2</a></li>
+            <li><a href="#section3" class="btn">sec3</a></li>
+            <li><a href="#section4" class="btn">sec4</a></li>
+        </ul>
+    </nav>
+	<section class="section1" id="section1">
+        section1
+        <div class="txt-change">
+           Scroll Text Color Change
+        </div>
+        <div class="card"></div>
+    </section>
+ 	<section class="section2" id="section2">
+        <nav class="nav-wrap">
+            <ul class="nav">
+                <li><a href="javascript:void(0)" onclick="nav1()" class="btn">tab1</a></li>
+                <li><a href="javascript:void(0)" onclick="nav2()" class="btn">tab2</a></li>
+                <li><a href="javascript:void(0)" onclick="nav3()" class="btn">tab3</a></li>
+                <li><a href="javascript:void(0)" onclick="nav4()" class="btn">tab4</a></li>
+            
+            </ul>
+        </nav>
+        <div class="event-wrap">
+            <div class="event event1">con1</div>
+            <div class="event event2">con2</div>
+            <div class="event event3">con3</div>
+            <div class="event event4">con4</div>
+        </div>
+	</section>
+    <section class="section3" id="section3">section3</section>
+    <section class="section4" id="section4">section4</section>
+ </div>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+ <script>
+       $(document).ready(function(){
+         
+				// $(".btn-top").on("click",function(){
+				// 	$("html, body").stop().animate({
+				// 		scrollTop : 0
+				// 	},0)
+				// })	
+
+        // GNB
+        function gnbFunc(){
+            let $gnbItem = $(".gnb li");
+            $gnbItem.on("click", function() {
+                $gnbItem.removeClass("on");
+                $(this).addClass("on");
+
+                // $("html, body").stop().animate({
+                //     scrollTop: $($(this).attr("href")).offset().top - 10
+                // }, 0);
+                // return false;
+            });
+        }
+        gnbFunc()
+
+        })
+ </script>
+
+ <script>
+    const event1 = document.querySelector(".event1");
+    const event2 = document.querySelector(".event2");
+    const event3 = document.querySelector(".event3");
+    const event4 = document.querySelector(".event4");
+    const event1Top = document.querySelector(".event1").offsetTop;
+    const event2Top = document.querySelector(".event2").offsetTop;
+    const event3Top = document.querySelector(".event3").offsetTop;
+    const event4Top = document.querySelector(".event4").offsetTop;
+
+    const section1 = document.querySelector(".section1");
+    const section2 = document.querySelector(".section2");
+    const section1Height = document.querySelector(".section1").clientHeight;
+    const section2Height = document.querySelector(".section2").clientHeight;
+    const section3Height = document.querySelector(".section3").clientHeight;
+
+    const nav = document.querySelector(".nav");
+    const navItem = document.querySelectorAll(".nav li");
+    navItem[0].classList.add("on") //첫번째 활성화
+    const navHeight = nav.clientHeight;
+
+    const txtCh = document.querySelector(".txt-change");
+    const card = document.querySelector(".card");
+
+    const gnbWrap = document.querySelector(".gnb-wrap");
+    const gnbWrapWidth = gnbWrap.clientWidth;
+    console.log(gnbWrapWidth)
+    const gnb = document.querySelector(".gnb");
+    const gnbItem = document.querySelectorAll(".gnb li");
+    gnbItem[0].classList.add("on");
+
+    let scrollNum = 0;
+    const documentHeight = document.body.scrollHeight - window.innerHeight + section1Height  /* marginTop값때문에 도큐먼트 높이가 늘어났기때문에, 마진탑도 더해주기 */
+    // for(var i = 0; i < fixedNavItem.length; i++){
+    //     fixedNavItem[i].querySelector(".btn").addEventListener("click",function(e){
+    //         e.preventDefault();
+    //         for(var x = 0; x < fixedNavItem.length; x++) {
+    //             fixedNavItem[x].classList.remove("on")
+    //         }
+    //         this.parentNode.classList.add("on")
+    //     })
+    // }
+    let num = 5;
+
+		// document.querySelector(".btn-top").addEventListener("click", () => {
+		// 	scrollTo({
+		// 		top:0,
+		// 		left:0,
+		// 	})
+		// })
+
+		function btnTop(){
+			scrollTo({
+				top:0,
+				left:0,
+			})
+		}
+
+    function gnbItem1(){
+        scrollTo({
+					top:0,
+					left:0,
+        })
+    }
+
+
+    
+
+
+
+    // Nav Fixed
+    function navFixed(){
+        if(scrollNum > section2.offsetTop) {
+        nav.classList.add("fixed");
+        }else {
+            nav.classList.remove("fixed");
+        };
+    }
+
+    // Nav Color - scroll
+    function navColorScroll(){
+        if(scrollNum > event2.offsetTop + section1Height - navHeight - 10){
+            navItem[1].classList.add("on");
+            navItem[0].classList.remove("on");
+        }else {
+            navItem[1].classList.remove("on");
+            navItem[0].classList.add("on")
+        };
+        if(scrollNum > event3.offsetTop + section1Height - navHeight - 10){
+            navItem[2].classList.add("on");
+            navItem[1].classList.remove("on");
+        }else {
+            navItem[2].classList.remove("on");
+        };
+        if(scrollNum > event4.offsetTop + section1Height - navHeight - 10){
+            navItem[3].classList.add("on");
+            navItem[2].classList.remove("on");
+        }else {
+            navItem[3].classList.remove("on");
+        };
+    }
+    
+    // Text Color Change
+    function txtChange(){
+        // console.log(scrollNum)
+        // if(scrollNum > section1Height / 20) {
+        //     card.style.backgroundColor = "yellow"
+        // }
+
+        // if(scrollNum = 0) {
+        //     card.style.backgroundColor = "pink"
+        // }
+
+        if(scrollNum > section1Height / 5){
+            txtCh.style.color = "yellowgreen";
+            card.style.transform = `rotateZ(${num}deg)`;
+            card.style.backgroundColor = "yellowgreen"
+        }else {
+            txtCh.style.color = "violet";
+            card.style.transform = `rotateZ(${0}deg)`;
+            card.style.backgroundColor = "violet"
+        }
+        if(scrollNum > section1Height / 3){
+            txtCh.style.color = "tomato"
+            card.style.transform = `rotateZ(${num * 2}deg)`;
+            card.style.backgroundColor = "tomato"
+        }
+        if(scrollNum > section1Height / 2){
+            txtCh.style.color = "pink"
+            card.style.transform = `rotateZ(${num * 7}deg)`;
+            card.style.backgroundColor = "pink"
+        }
+        if(scrollNum > section1Height / 1.1){
+            card.style.transform = `rotateZ(${num * 18}deg)`;
+            card.style.width = "150px";
+            card.style.left = "90%";
+        }else {
+            card.style.width = "50vw";
+            card.style.left = "50%";
+        }
+    
+
+    }
+    
+    // Scroll Func
+    window.addEventListener("scroll", ()=> {
+        scrollNum = window.scrollY;
+        per = ((scrollNum / documentHeight) * 100).toFixed(0);
+        txtCh.style.transform = `translate(${per/2}%)`;
+        gnb.style.transform = `translate(${-per/2}%`;
+
+
+        // if(scrollNum > gnbWrapWidth / 5) {
+        //     gnbItem[0].classList.add("on");
+   
+        // }else {
+        //     gnbItem[0].classList.remove("on");
+        // }
+        // if(scrollNum > gnbWrapWidth / 2) {
+        //     gnbItem[1].classList.add("on");
+        //     gnbItem[0].classList.remove("on");
+   
+        // }else {
+        //     gnbItem[1].classList.remove("on");
+        //     gnbItem[0].classList.add("on");
+        // }
+        // if(scrollNum > gnbWrapWidth / 1.5) {
+        //     gnbItem[2].classList.add("on");
+        //     gnbItem[1].classList.remove("on");
+   
+        // }else {
+        //     gnbItem[2].classList.remove("on");
+        //     gnbItem[1].classList.add("on");
+        // }
+        // if(scrollNum > gnbWrapWidth / 1.1) {
+        //     gnbItem[3].classList.add("on");
+        //     gnbItem[2].classList.remove("on");
+   
+        // }else {
+        //     gnbItem[3].classList.remove("on");
+        //     gnbItem[2].classList.add("on");
+        // }
+     
+        
+        navFixed()
+        navColorScroll()
+        txtChange()
+        // console.log(scrollNum)
+        // console.log(section1Height / 3);
+        // console.log(section1Height / 2);
+       
+
+        // for(var z = 0; z < fixedNavItem.length; z++){
+        //     if(scrollNum > event2.offsetTop + section1.clientHeight){
+        //         for(var j = 0; j <fixedNavItem.length; j++){
+        //             fixedNavItem[j].classList.remove("on");
+        //         }
+        //         this.classList.add("on");
+        //     }
+        // }
+        
+    });
+
+ 
+ 
+
+    // for(var a = 0; a < gnbItem.length; a++){
+    //     gnbItem[a].querySelector(".btn").addEventListener("click", (e) => {
+    //         event.preventDefault();
+    //         this.parentNode.style.backgroundColor = "red"
+    //     })
+        
+    // }
+    // console.log(gnbItem)
+    // function gnbColorChange(){
+    //     for(var a = 0; a < gnbItem.length; a++){
+    //         gnbItem[a].addEventListener("click",function(){
+    //         // e.preventDefault();
+    //         for(var z = 0; z < gnbItem.length; z++) {
+    //             gnbItem[z].classList.remove("on")
+    //         }
+    //         this.classList.add("on");
+    //         })
+    //     }
+    // }
+
+
+    // Nav Color Change - click
+    function navColorClick(){
+        for(var i = 0; i < navItem.length; i++){
+
+            navItem[i].addEventListener("click", (e) => {
+            // e.preventDefault();
+            for(var x = 0; x < navItem.length; x++) {
+                navItem[x].classList.remove("on")
+            }
+            this.classList.add("on");
+            // this.querySelector(".btn").getAttribute("href").offsetTop;
+            // scrollTo({
+            //     top:this.querySelector(".btn").getAttribute("href").offsetTop,
+            //     left:0,
+            //     behavior:'smooth'
+            // })
+
+            })
+        }
+    }
+   
+ 
+    // Nav Scroll Move
+    function nav1(){
+        scrollTo({
+            top:event1Top + section1Height - navHeight,
+            left:0,
+            behavior:'smooth'
+        }) 
+    };
+    function nav2(){
+        scrollTo({
+            top:event2Top + section1Height - navHeight,
+            left:0,
+            behavior:'smooth',
+        });
+    };
+    function nav3(){
+        scrollTo({
+            top:event3Top + section1Height - navHeight,
+            left:0,
+            behavior:'smooth'
+        }); 
+    };
+    function nav4(){
+        scrollTo({
+            top:event4Top + section1Height - navHeight,
+            left:0,
+            behavior:'smooth'
+        }); 
+    };
+ 
+   
+ </script>
+</body>
+</html>
