@@ -332,7 +332,7 @@
 
 
 
-    // Nav Fixed
+    // Scroll Nav Fixed
     function navFixed(){
         if(scrollNum > section2.offsetTop) {
         nav.classList.add("fixed");
@@ -341,7 +341,7 @@
         };
     }
 
-    // Nav Color - scroll
+    // Sroll (Nav Color Change
     function navColorScroll(){
         if(scrollNum > event2.offsetTop + section1Height - navHeight - 10){
             navItem[1].classList.add("on");
@@ -364,7 +364,7 @@
         };
     }
     
-    // Text Color Change
+    // Text Color Change , ltr moving
     function txtChange(){
         // console.log(scrollNum)
         // if(scrollNum > section1Height / 20) {
@@ -489,7 +489,7 @@
     // }
 
 
-    // Nav Color Change - click
+    // click Nav Color Change
     function navColorClick(){
         for(var i = 0; i < navItem.length; i++){
 
@@ -511,7 +511,7 @@
     }
    
  
-    // Nav Scroll Move
+    // Nav onclick Scroll to div
     function nav1(){
         scrollTo({
             top:event1Top + section1Height - navHeight,
