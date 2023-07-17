@@ -6,6 +6,9 @@ https://flowerkong3.github.io/component/scroll/scroll-brunch.html
 scroll-textline-change | 스크롤 내리면 글자색 한줄씩 변경 <br>
 https://flowerkong3.github.io/component/scroll/fixed_text_change.html
 
+scroll-fixed-nav | 네비메뉴 고정 <br>
+https://flowerkong3.github.io/component/scroll/fixed-nav.html
+
 ## draggable
 draggable-box | 마우스 잡고 움직이는 박스 <br>
 https://flowerkong3.github.io/component/draggable-box.html <br>
