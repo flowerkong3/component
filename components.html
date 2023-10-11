@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>components</title>
+
+	<!-- jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+		crossorigin="anonymous"></script>
+
+	<style>
+		/* 공통 */
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+		* {
+			list-style: none;
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			color: #222;
+			text-decoration: none;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		:root {
+			--color-primary: salmon;
+		}
+
+		button {
+			cursor: pointer;
+		}
+
+		.section {
+			padding: 100px;
+			height: 100%;
+			width: 100%;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			border: 1px dashed #222;
+		}
+
+		.container {
+			width: 500px;
+			height: 100%;
+		}
+
+		h2 {
+			text-align: center;
+			background: #222;
+			color: #fff;
+			font-size: 2rem;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>탭메뉴</h2>
+	<section class="section tab-type1">
+		<style>
+			.tab-type1 .tab-menu {
+				display: flex;
+				width: 500px;
+				height: 100px;
+			}
+
+			.tab-type1 .tab-menu__item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				background: #ccc;
+				cursor: pointer;
+			}
+
+			.tab-type1 .tab-menu__item.active {
+				background: var(--color-primary);
+			}
+
+			.tab-type1 .tab-menu__item a {
+				display: block;
+				font-size: 2vw;
+			}
+
+			.tab-type1 .tab-content {
+				display: none;
+				width: 500px;
+				height: 300px;
+				background: #ddd;
+				font-size: 4vw;
+				line-height: 300px;
+				text-align: center;
+			}
+
+			.tab-type1 .tab-content.active {
+				display: block;
+			}
+		</style>
+
+		<nav>
+			<ul class="tab-menu">
+				<li class="tab-menu__item active"><a href="">tab1</a></li>
+				<li class="tab-menu__item"><a href="">tab2</a></li>
+				<li class="tab-menu__item"><a href="">tab3</a></li>
+			</ul>
+		</nav>
+		<div>
+			<div class="tab-content active">content1</div>
+			<div class="tab-content">content2</div>
+			<div class="tab-content">content3</div>
+		</div>
+
+		<script>
+			const tabType1 = function () {
+				$(".tab-menu__item").on("click", function () {
+					var idx = $(this).index();
+					$(".tab-menu__item").removeClass("active");
+					$(".tab-menu__item").eq(idx).addClass("active");
+					$(".tab-content").removeClass("active");
+					$(".tab-content").eq(idx).addClass("active");
+					return false; //return false로 링크 기능인 href가 수행되지 않게하기
+				})
+			}
+			tabType1();
+		</script>
+	</section>
+	<h2>탭 클릭시 탭배경 이동</h2>
+	<section class="section tab-type2">
+		<style>
+			.tab-type2 .tab-menu-wrap {
+				position: relative;
+			}
+
+			.tab-type2 .tab-menu {
+				z-index: 1;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 500px;
+				height: 50px;
+				border: 1px solid #ccc;
+				border-radius: 30px;
+			}
+
+			.tab-type2 .tab-item {
+				width: 100%;
+				text-align: center;
+				color: #ccc;
+			}
+
+			.tab-type2 .tab-item a {
+				display: block;
+				padding: 20px;
+				color: #222;
+			}
+
+			.tab-type2 .tab-item.active a {
+				color: #fff;
+			}
+
+			.tab-type2 .menu-bar {
+				position: absolute;
+				top: 7px;
+				left: 7px;
+				width: 148px;
+				height: 70%;
+				background: var(--color-primary);
+				border-radius: 50px;
+				transition: all 0.3s;
+			}
+
+			.tab-type2 .menu-bar.left1 {
+				left: 34%;
+			}
+
+			.tab-type2 .menu-bar.left2 {
+				left: 69%;
+			}
+
+			.tab-type2 .tab-content {
+				display: none;
+				padding: 20px;
+				width: 500px;
+				overflow: hidden;
+				transition: all 0.3s;
+			}
+
+			.tab-type2 .tab-content.active {
+				display: block;
+			}
+
+			.fade-up {
+				animation: fade-up 1s ease-in-out;
+			}
+
+			.fade-up2 {
+				animation: fade-up 1.5s ease-in-out;
+			}
+
+			@keyframes fade-up {
+				0% {
+					transform: translateY(50px);
+					opacity: 0;
+				}
+
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+		<div class="container">
+			<nav class="tab-menu-wrap">
+				<ul class="tab-menu">
+					<li class="tab-item tab1 active"><a href="">tab1</a></li>
+					<li class="tab-item tab2"><a href="">tab2</a></li>
+					<li class="tab-item tab3"><a href="">tab3</a></li>
+				</ul>
+				<div class="menu-bar"></div>
+			</nav>
+			<div>
+				<div class="tab-content active">
+					<h3 class="fade-up">content1</h3>
+					<div class="fade-up2">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugit totam amet repellendus ullam rem, beatae
+						tempora! Sint maxime praesentium dolorem qui quisquam explicabo nostrum distinctio, nemo velit sunt, neque
+						aut, impedit nesciunt alias enim nulla modi deleniti. Maxime quos fuga cumque expedita, officiis architecto,
+						praesentium aliquid illo nesciunt est magnam voluptatibus! Nobis iusto ullam porro corrupti itaque minus aut
+						magni perspiciatis, est amet sunt non minima eos voluptatem placeat inventore error, labore ea qui velit
+						dolor obcaecati quo eaque. Aliquid commodi adipisci hic iure tempore molestiae esse totam officia. Et eum,
+						dolore numquam quibusdam hic cum minima minus tenetur?
+					</div>
+				</div>
+				<div class="tab-content">
+					<h3 class="fade-up">content2</h3>
+					<div class="fade-up2">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugit totam amet repellendus ullam rem, beatae
+						tempora! Sint maxime praesentium dolorem qui quisquam explicabo nostrum distinctio, nemo velit sunt, neque
+						aut, impedit nesciunt alias enim nulla modi deleniti. Maxime quos fuga cumque expedita, officiis architecto,
+						praesentium aliquid illo nesciunt est magnam voluptatibus! Nobis iusto ullam porro corrupti itaque minus aut
+						magni perspiciatis, est amet sunt non minima eos voluptatem placeat inventore error, labore ea qui velit
+						dolor obcaecati quo eaque. Aliquid commodi adipisci hic iure tempore molestiae esse totam officia. Et eum,
+						dolore numquam quibusdam hic cum minima minus tenetur?
+					</div>
+				</div>
+				<div class="tab-content">
+					<h3 class="fade-up">content3</h3>
+					<div class="fade-up2">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugit totam amet repellendus ullam rem, beatae
+						tempora! Sint maxime praesentium dolorem qui quisquam explicabo nostrum distinctio, nemo velit sunt, neque
+						aut, impedit nesciunt alias enim nulla modi deleniti. Maxime quos fuga cumque expedita, officiis architecto,
+						praesentium aliquid illo nesciunt est magnam voluptatibus! Nobis iusto ullam porro corrupti itaque minus aut
+						magni perspiciatis, est amet sunt non minima eos voluptatem placeat inventore error, labore ea qui velit
+						dolor obcaecati quo eaque. Aliquid commodi adipisci hic iure tempore molestiae esse totam officia. Et eum,
+						dolore numquam quibusdam hic cum minima minus tenetur?
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const tabType2 = function () {
+				$(".tab-type2 .tab-item").on("click", function () {
+					var idx = $(this).index();
+
+					$(".tab-type2 .tab-item").removeClass("active");
+					$(".tab-type2 .tab-item").eq(idx).addClass("active");
+					$(".tab-type2 .tab-content").removeClass("active");
+					$(".tab-type2 .tab-content").eq(idx).addClass("active");
+					if ($(".tab-type2 .tab-item").eq(1).hasClass("active")) {
+						$(".menu-bar").addClass("left1")
+					} else {
+						$(".menu-bar").removeClass("left1")
+					};
+					if ($(".tab-type2 .tab-item").eq(2).hasClass("active")) {
+						$(".menu-bar").addClass("left2")
+					} else {
+						$(".menu-bar").removeClass("left2")
+					};
+					return false;
+				})
+			}
+			tabType2();
+		</script>
+	</section>
+	<h2>나머지 메뉴 닫히는 아코디언</h2>
+	<section class="section acc-type1">
+		<style>
+			.faq__btn {
+				position: relative;
+				display: block;
+				padding: 20px;
+				width: 100%;
+				border: 1px solid #222;
+				font-size: 20px;
+			}
+
+			.faq__btn.active {
+				background: var(--color-primary);
+			}
+
+			.faq__btn::after {
+				content: "";
+				position: absolute;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 20px;
+				height: 20px;
+				background: url(ico_plus.svg)no-repeat center / cover;
+				transition: all 0.2s;
+			}
+
+			.faq__btn.active::after {
+				background: url(ico_minus.svg)no-repeat center / cover;
+			}
+
+			.faq__desc {
+				display: none;
+				padding: 20px;
+			}
+
+			.faq__desc.active {
+				display: block;
+			}
+		</style>
+
+		<div class="container">
+			<ul class="faq">
+				<li>
+					<button class="faq__btn">질문1</button>
+					<div class="faq__desc">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium odit explicabo dignissimos quibusdam
+						rerum iusto illo natus, harum, veniam temporibus modi porro deleniti non facere maiores velit aliquid?
+						Commodi, beatae hic. Laboriosam voluptates totam aut accusantium temporibus iste corrupti, sint voluptate,
+						id sit voluptas quaerat dolore enim debitis fuga molestias cumque, ipsum reiciendis soluta beatae! Placeat
+						facilis dolor ab consequuntur iure perferendis sed itaque distinctio numquam! Tempore illo doloremque
+						perspiciatis sint, recusandae tempora aperiam accusantium asperiores autem eligendi, possimus laudantium
+						explicabo quam alias rerum? Consectetur labore vel possimus, delectus repellendus ad architecto adipisci!
+						Impedit molestias totam esse suscipit, cum ab?
+					</div>
+				</li>
+				<li>
+					<button class="faq__btn">질문2</button>
+					<div class="faq__desc">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium odit explicabo dignissimos quibusdam
+						rerum iusto illo natus, harum, veniam temporibus modi porro deleniti non facere maiores velit aliquid?
+						Commodi, beatae hic. Laboriosam voluptates totam aut accusantium temporibus iste corrupti, sint voluptate,
+						id sit voluptas quaerat dolore enim debitis fuga molestias cumque, ipsum reiciendis soluta beatae! Placeat
+						facilis dolor ab consequuntur iure perferendis sed itaque distinctio numquam! Tempore illo doloremque
+						perspiciatis sint, recusandae tempora aperiam accusantium asperiores autem eligendi, possimus laudantium
+						explicabo quam alias rerum? Consectetur labore vel possimus, delectus repellendus ad architecto adipisci!
+						Impedit molestias totam esse suscipit, cum ab?
+					</div>
+				</li>
+				<li>
+					<button class="faq__btn">질문3</button>
+					<div class="faq__desc">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium odit explicabo dignissimos quibusdam
+						rerum iusto illo natus, harum, veniam temporibus modi porro deleniti non facere maiores velit aliquid?
+						Commodi, beatae hic. Laboriosam voluptates totam aut accusantium temporibus iste corrupti, sint voluptate,
+						id sit voluptas quaerat dolore enim debitis fuga molestias cumque, ipsum reiciendis soluta beatae! Placeat
+						facilis dolor ab consequuntur iure perferendis sed itaque distinctio numquam! Tempore illo doloremque
+						perspiciatis sint, recusandae tempora aperiam accusantium asperiores autem eligendi, possimus laudantium
+						explicabo quam alias rerum? Consectetur labore vel possimus, delectus repellendus ad architecto adipisci!
+						Impedit molestias totam esse suscipit, cum ab?
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<script>
+			const accType1 = function () {
+				$(".faq__btn").on("click", function () {
+					var idx = $(this).index();
+					// $(".faq__btn").removeClass("active");
+					$(this).toggleClass("active");
+					$(this).next().slideToggle();
+					$(this).parent().siblings().children(".faq__desc").slideUp();
+					$(this).parent().siblings().children(".faq__btn").removeClass("active");
+				})
+			}
+			accType1();
+		</script>
+	</section>
+
+
+
+
+	<!-- 	Swiper Demo [Start] =========================================================	-->
+
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+	<!-- Swiper JS -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+	<h2>스와이퍼 | Slides per group skip | mousewheel</h2>
+	<section class="section swiper-type1">
+		<!-- CSS -->
+		<style>
+			.swiper-type1 .container {
+				padding: 50px;
+				margin: 0 auto;
+				width: 1000px;
+				position: relative;
+				background: pink;
+			}
+
+			.swiper-type1 .swiper {
+				width: 100%;
+				height: 100%;
+			}
+
+			.swiper-type1 .swiper-slide {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+			}
+
+			.swiper-type1 .swiper-slide img {
+				display: block;
+				width: 100%;
+			}
+
+			@media only screen and (min-width: 769px) {
+				.swiper-type1 .swiper-slide:first-child {
+					transition: transform 100ms;
+				}
+
+				.swiper-type1 .swiper-slide:first-child img {
+					transition: box-shadow 500ms;
+				}
+
+				.swiper-type1 .swiper-slide.swiper-slide-active:first-child {
+					transform: translateX(50%);
+					z-index: 2;
+				}
+
+				.swiper-type1 .swiper-slide.swiper-slide-active:first-child img {
+					box-shadow: 0px 32px 80px rgba(0, 0, 0, 0.35);
+				}
+
+				.swiper-type1 .swiper-slide:nth-child(2) {
+					transition: transform 100ms;
+				}
+
+				.swiper-type1 .swiper-slide.swiper-slide-next:nth-child(2) {
+					transform: translateX(55%);
+					z-index: 1;
+				}
+
+				.swiper-type1 .swiper[dir="rtl"] .swiper-slide.swiper-slide-active:first-child {
+					transform: translateX(-50%);
+				}
+
+				.swiper-type1 .swiper[dir="rtl"] .swiper-slide.swiper-slide-next:nth-child(2) {
+					transform: translateX(-55%);
+				}
+			}
+		</style>
+		<!-- HTML -->
+		<div class="container">
+			<div class="swiper mySwiper1">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide first">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-001.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-002.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-003.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-004.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-005.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-006.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-007.jpg" />
+					</div>
+					<div class="swiper-slide">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-008.jpg" />
+					</div>
+					<div class="swiper-slide last">
+						<img src="https://cdn.magloft.com/github/swiper/images/page-009.jpg" />
+					</div>
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-scrollbar"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<!-- JS -->
+		<script>
+			var swiper = new Swiper(".mySwiper1", {
+				slidesPerView: 1,
+				centeredSlides: false,
+				slidesPerGroupSkip: 1,
+				grabCursor: true,
+				// slidesPerGroup: 10,
+				keyboard: {
+					enabled: true,
+				},
+				mousewheelSensitivity: 1,
+				mousewheel: {
+					releaseOnEdges: true, //첫페이지, 마지막페이지 마우스휠 비활성화
+				},
+				touchReleaseOnEdges: true, //터치?
+
+				breakpoints: {
+					769: {
+						slidesPerView: 2,
+						slidesPerGroup: 2,
+					},
+				},
+				scrollbar: {
+					el: ".swiper-scrollbar",
+				},
+				navigation: {
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				},
+				pagination: {
+					el: ".swiper-pagination",
+					clickable: true,
+				},
+				// on: {
+				// 	reachEnd: function () {
+				// 		swiper.mousewheel.disabled();
+				// 	}
+				// }
+
+			});
+		</script>
+
+	</section>
+
+	<h2>스와이퍼 | mousewheel</h2>
+	<section class="section swiper-type2">
+		<!-- CSS -->
+		<style>
+			.swiper-type2 .container {
+				height: 500px;
+				border: 1px solid red;
+			}
+
+			.swiper-type2 .swiper {
+				/* width: 100%; */
+			}
+
+			.swiper-type2 .swiper-slide {
+				text-align: center;
+				font-size: 18px;
+				background: pink;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 500px;
+				background: #ccc;
+			}
+
+			.swiper-type2 .swiper-slide img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		</style>
+		<!-- HTML -->
+		<div class="container">
+			<div class="swiper mySwiper2">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+					<div class="swiper-slide">Slide 6</div>
+					<div class="swiper-slide">Slide 7</div>
+					<div class="swiper-slide">Slide 8</div>
+					<div class="swiper-slide">Slide 9</div>
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<!-- JS -->
+		<script>
+			var swiper = new Swiper(".mySwiper2", {
+				autoplay: {
+					delay: 1000,
+				},
+				// speed:500,
+				mousewheel: {
+					speed: 3000,
+					// releaseOnEdges: false,
+					releaseOnEdges: true, //첫페이지,마지막페이지 마우스휠 비활성화
+				},
+				pagination: {
+					el: ".swiper-type2 .swiper-pagination",
+					type: "progressbar",
+				},
+				navigation: {
+					nextEl: ".swiper-type2 .swiper-button-next",
+					prevEl: ".swiper-type2 .swiper-button-prev",
+				},
+				// on: {
+				// 	reachEnd: function () {
+				// 		swiper.mousewheel.unabled();
+				// 	}
+				// }
+			});
+		</script>
+	</section>
+
+	<h2>스와이퍼 | Effect cards</h2>
+	<section class="section swiper-type3">
+		<!-- CSS -->
+		<style>
+			.swiper-type3 .swiper {
+				width: 340px;
+				height: 520px;
+			}
+
+			.swiper-type3 .swiper-slide {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 18px;
+				font-size: 22px;
+				font-weight: bold;
+				color: #fff;
+			}
+
+			.swiper-type3 .swiper-slide-active {
+				animation: ani2 0.5s linear;
+				margin-top: -50px;
+			}
+
+			@keyframes ani2 {
+				0% {
+					margin-top: 0px;
+				}
+
+				100% {
+					margin-top: -50px;
+				}
+			}
+
+			.swiper-type3 .swiper-slide:nth-child(1n) {
+				background-color: rgb(250, 17, 17);
+			}
+
+			/* .swiper-type3 .swiper-slide-active:nth-child(2) {
+				background: url(https://images.unsplash.com/photo-1682687980115-a37b56ea7271?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80)no-repeat top/cover;
+				transition: all 1.3s;
+			} */
+
+			.swiper-type3 .swiper-slide:nth-child(2n) {
+				background-color: rgb(0, 140, 255);
+			}
+
+			.swiper-type3 .swiper-slide:nth-child(3n) {
+				background-color: rgb(10, 184, 111);
+			}
+
+			.swiper-type3 .swiper-slide:nth-child(4n) {
+				background-color: rgb(211, 122, 7);
+			}
+
+			.swiper-type3 .swiper-slide:nth-child(5n) {
+				background-color: rgb(118, 163, 12);
+			}
+		</style>
+		<!-- HTML -->
+		<div class="container">
+			<div class="swiper mySwiper3">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">Slide 1 <br>클릭하면 뒷면이 보여요! </div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+				</div>
+			</div>
+		</div>
+		<!-- JS -->
+		<script>
+			$(".mySwiper3 .swiper-slide").on("click", function () {
+				var idx = $(this).index();
+				$(".mySwiper3 .swiper-slide").eq(0).css({
+					"background-image": "url(https://source.unsplash.com/random/340x520/?bird)",
+					// "background-repeat" : "no-repeat", 
+					// "background-position":"center center"
+				});
+				$(".mySwiper3 .swiper-slide").eq(1).css({
+					"background-image": "url(https://source.unsplash.com/random/340x520/?dog)"
+				});
+				$(".mySwiper3 .swiper-slide").eq(2).css({
+					"background-image": "url(https://source.unsplash.com/random/340x520/?cat)"
+				});
+				$(".mySwiper3 .swiper-slide").eq(3).css({
+					"background-image": "url(https://source.unsplash.com/random/340x520/?fox)"
+				});
+				$(".mySwiper3 .swiper-slide").eq(4).css({
+					"background-image": "url(https://source.unsplash.com/random/340x520/?wolf)"
+				});
+				// 클릭한 카드 제외한 나머지는 초기화
+				$(".mySwiper3 .swiper-slide").not(".swiper-slide-active").css({
+					"background-image": "none",
+				});
+
+
+			})
+		</script>
+		<script>
+			var swiper = new Swiper(".mySwiper3", {
+				effect: "cards",
+				grabCursor: true,
+				// mousewheel: true,
+
+			});
+		</script>
+
+
+	</section>
+
+	<!-- 	Swiper Demo [End] =========================================================	-->
+
+	<style>
+		.slide-type1 .container {
+			position: relative;
+		}
+
+		.slide-type1 .slide-wrap {
+			position: relative;
+			width: 400px;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+
+		.slide-type1 .slide-list {
+			display: flex;
+			margin: 0 auto;
+			width: 800px;
+			height: 300px;
+			/* gap:10px; */
+			background: var(--color-primary);
+			transition: all 0.5s;
+		}
+
+		.slide-type1 .slide-item {
+			flex: 1;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.slide-type1 button {
+			border-radius: 100%;
+			border: 1px solid #000;
+			background: #fff;
+			transition: all 0.3s
+		}
+
+		.slide-type1 button:hover {
+			background: var(--color-primary);
+		}
+
+		.slide-type1 .btn-prev {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: -10px;
+			width: 50px;
+			height: 50px;
+		}
+
+		.slide-type1 .btn-next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: -10px;
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+	<h2>슬라이드 하드코딩</h2>
+	<section class="section slide-type1">
+
+		<div class="container">
+			<div class="slide-wrap">
+				<ul class="slide-list">
+					<li class="slide-item slide-item-1">slide1</li>
+					<li class="slide-item">slide2</li>
+				</ul>
+			</div>
+			<div class="pagenation">
+				<button class="btn-prev">prev</button>
+				<button class="btn-next">next</button>
+			</div>
+		</div>
+	</section>
+	<script>
+		const slideType1 = function () {
+			const slideList = document.querySelector(".slide-type1 .slide-list");
+			const slideItems = document.querySelectorAll(".slide-type1 .slide-item");
+			// slideType1Items.outerWidth();
+			let slideItemWidth = document.querySelector(".slide-type1 .slide-item-1").clientWidth;
+
+			const btnPrev = document.querySelector(".slide-type1 .btn-prev");
+			const btnNext = document.querySelector(".slide-type1 .btn-next");
+
+			btnPrev.addEventListener("click", () => {
+				// slideList.style.transform = "translateX(-500px)";
+				slideList.style.transform = `translateX(${0}px)`;
+			});
+			btnNext.addEventListener("click", () => {
+				// slideList.style.transform = "translateX(-500px)";
+				slideList.style.transform = `translateX(-${slideItemWidth}px)`;
+			});
+
+
+		}
+		slideType1();
+	</script>
+
+</body>
+
+</html>
