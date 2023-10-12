@@ -10,7 +10,12 @@
 	<!-- jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 		crossorigin="anonymous"></script>
+		
+	<!-- Swiper -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+	<!-- Common CSS -->
 	<style>
 		/* 공통 */
 		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
@@ -24,15 +29,15 @@
 			text-decoration: none;
 			font-family: 'Poppins', sans-serif;
 		}
-
 		:root {
 			--color-primary: salmon;
 		}
-
+		html {
+			scroll-behavior: smooth;
+		}
 		button {
 			cursor: pointer;
 		}
-
 		.section {
 			padding: 100px;
 			height: 100%;
@@ -49,18 +54,49 @@
 			width: 500px;
 			height: 100%;
 		}
-
 		h2 {
 			text-align: center;
 			background: #222;
 			color: #fff;
 			font-size: 2rem;
 		}
+		.aside {
+			z-index: 999;
+			position: fixed;
+			padding: 20px;
+			width: 300px;
+			height: 100%;
+			background: #fff;
+			font-size:14px;
+		}
+		.aside a {
+			padding: 10px 0 ;
+			display:block;
+			border-bottom: 1px solid #000;
+		}
 	</style>
 </head>
 
 <body>
-	<h2>탭메뉴</h2>
+	<aside class="aside">
+		<ul>
+			<li><a href="#sec1">탭 | 기본</a></li>
+			<li><a href="#sec2">탭 | 탭배경 이동</a></li>
+			<li><a href="#sec3">탭 | 아이템매칭</a></li>
+			<li><a href="#sec4">아코디언 | 나머지 메뉴 닫히는</a></li>
+			<li><a href="#sec5">스와이퍼 | Slides per group skip | mousewheel</a></li>
+			<li><a href="#sec6">스와이퍼 | mousewheel</a></li>
+			<li><a href="#sec7">스와이퍼 | Effect cards</a></li>
+			<li><a href="#sec9">슬라이드</a></li>
+			<li><a href="#sec10"></a></li>
+			<li><a href="#sec11"></a></li>
+			<li><a href="#sec12"></a></li>
+			<li><a href="#sec13"></a></li>
+			<li><a href="#sec14"></a></li>
+		</ul>
+	</aside>
+
+	<h2 id="sec1">탭 | 기본</h2>
 	<section class="section tab-type1">
 		<style>
 			.tab-type1 .tab-menu {
@@ -133,7 +169,7 @@
 		</script>
 	</section>
 
-	<h2>탭 배경 이동</h2>
+	<h2 id="sec2">탭 | 탭배경 이동</h2>
 	<section class="section tab-type2">
 		<style>
 			.tab-type2 .tab-menu-wrap {
@@ -293,7 +329,7 @@
 		</script>
 	</section>
 
-	<h2> 탭 | 아이템매칭</h2>
+	<h2 id="sec3"> 탭 | 아이템매칭</h2>
 	<section class="section tab-type3">
 		<style>
 			.tab-type3 img {
@@ -431,8 +467,8 @@
 			tabType3();
 		</script>
 	</section>
-
-	<h2>아코디언 | 나머지 메뉴 닫히는</h2>
+	
+	<h2 id="sec4">아코디언 | 나머지 메뉴 닫히는</h2>
 	<section class="section acc-type1">
 		<style>
 			.faq__btn {
@@ -533,17 +569,8 @@
 		</script>
 	</section>
 
-
-
-
-	<!-- 	[Start]Swiper Demo  =========================================================	-->
-
-	<!-- Link Swiper's CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-	<!-- Swiper JS -->
-	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-	<h2>스와이퍼 | Slides per group skip | mousewheel</h2>
+	<!-- 	[Start] Swiper =========================================================	-->
+	<h2 id="sec5">스와이퍼 | Slides per group skip | mousewheel</h2>
 	<section class="section swiper-type1">
 		<!-- CSS -->
 		<style>
@@ -692,7 +719,7 @@
 
 	</section>
 
-	<h2>스와이퍼 | mousewheel</h2>
+	<h2 id="sec6">스와이퍼 | mousewheel</h2>
 	<section class="section swiper-type2">
 		<!-- CSS -->
 		<style>
@@ -771,7 +798,7 @@
 		</script>
 	</section>
 
-	<h2>스와이퍼 | Effect cards</h2>
+	<h2 id="sec7">스와이퍼 | Effect cards</h2>
 	<section class="section swiper-type3">
 		<!-- CSS -->
 		<style>
@@ -883,7 +910,7 @@
 
 	</section>
 
-	<!-- [End]Swiper Demo  =========================================================	-->
+	<!-- [End] Swiper =========================================================	-->
 
 	<style>
 		.slide-type1 .container {
@@ -944,7 +971,7 @@
 			height: 50px;
 		}
 	</style>
-	<h2>슬라이드 하드코딩</h2>
+	<h2 id="sec8">슬라이드</h2>
 	<section class="section slide-type1">
 
 		<div class="container">
