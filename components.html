@@ -103,18 +103,19 @@
 				display: block;
 			}
 		</style>
-
-		<nav>
-			<ul class="tab-menu">
-				<li class="tab-menu__item active"><a href="">tab1</a></li>
-				<li class="tab-menu__item"><a href="">tab2</a></li>
-				<li class="tab-menu__item"><a href="">tab3</a></li>
-			</ul>
-		</nav>
-		<div>
-			<div class="tab-content active">content1</div>
-			<div class="tab-content">content2</div>
-			<div class="tab-content">content3</div>
+		<div class="container">
+			<nav>
+				<ul class="tab-menu">
+					<li class="tab-menu__item active"><a href="">tab1</a></li>
+					<li class="tab-menu__item"><a href="">tab2</a></li>
+					<li class="tab-menu__item"><a href="">tab3</a></li>
+				</ul>
+			</nav>
+			<div>
+				<div class="tab-content active">content1</div>
+				<div class="tab-content">content2</div>
+				<div class="tab-content">content3</div>
+			</div>
 		</div>
 
 		<script>
@@ -131,7 +132,8 @@
 			tabType1();
 		</script>
 	</section>
-	<h2>탭 클릭시 탭배경 이동</h2>
+
+	<h2>탭 배경 이동</h2>
 	<section class="section tab-type2">
 		<style>
 			.tab-type2 .tab-menu-wrap {
@@ -290,7 +292,147 @@
 			tabType2();
 		</script>
 	</section>
-	<h2>나머지 메뉴 닫히는 아코디언</h2>
+
+	<h2> 탭 | 아이템매칭</h2>
+	<section class="section tab-type3">
+		<style>
+			.tab-type3 img {
+				width:100%;
+				display:block;
+			}
+			.tab-type3 .container {
+				display:flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				flex-direction: column;
+				min-width: 300px;
+			}
+			.tab-type3 .container > div {
+				width:300px;
+				height: 300px;
+			}
+			.tab-type3 .tab-cont-wrap {
+				position:relative;
+				overflow:hidden;
+				background: none;
+				outline: 1px solid #000;
+			}
+			.tab-type3 .big-img {
+				position:relative;
+				z-index: 1;
+			}
+			.tab-type3 .big-img img {
+				width:300px;
+			}
+			.tab-type3 .tab-cont {
+				z-index: -1;
+				position: absolute;
+				top: 83px;
+				 left: 72px;
+				width: 137px;
+				display:none;
+			
+			}
+			.tab-type3 .attached.active {
+				display:block;
+			}
+			.tab-type3 .item-list {
+				display:flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+			.tab-type3 .tab-item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: calc(100% / 3 - 7px);
+				height: 93px;
+				outline: 1px solid #000;
+			}
+			.tab-type3 .tab-item.active {
+				background: #FFC83A;
+				outline: 3px solid #000;
+			}
+			.tab-type3 .tab-item__btn {
+				height: 100%;
+				display: flex;
+				align-items: center;
+			}
+			.tab-type3 .tab-cont-bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.tab-type3 .tab-cont-bg.active {
+				display:block;
+			}
+		
+			.tab-type3 .tab-cont-bg:nth-of-type(1) {background: red;}
+			.tab-type3 .tab-cont-bg:nth-of-type(2) {background: yellow;}
+			.tab-type3 .tab-cont-bg:nth-of-type(3) {background: skyblue;}
+		
+			
+		</style>
+		<div class="container">
+			<div class="big-img-wrap tab-cont-wrap">
+				<img src="images/img1.png" alt="" class="attached tab-cont" id="tab1">
+				<img src="images/img2.png" alt="" class="attached tab-cont" id="tab2">
+				<img src="images/img3.png" alt="" class="attached tab-cont" id="tab3">
+				<img src="images/img4.png" alt="" class="attached tab-cont" id="tab4">
+				<img src="images/img5.png" alt="" class="attached tab-cont" id="tab5">
+				<img src="images/img6.png" alt="" class="attached tab-cont" id="tab6">
+				<img src="images/img7.png" alt="" class="attached tab-cont" id="tab7">
+				<img src="images/img8.png" alt="" class="attached tab-cont" id="tab8">
+				<img src="images/img9.png" alt="" class="attached tab-cont" id="tab9">
+				<div class="big-img">
+					<img src="images/big-img.png" alt="">
+				</div>
+		
+			</div>
+			<div class="item-wrap tab-nav-wrap">
+				<ul class="item-list tab-nav">
+					<li class="item tab-item"><a href="#tab1" class="tab-item__btn"><img src="images/img1.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab2" class="tab-item__btn"><img src="images/img2.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab3" class="tab-item__btn"><img src="images/img3.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab4" class="tab-item__btn"><img src="images/img4.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab5" class="tab-item__btn"><img src="images/img5.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab6" class="tab-item__btn"><img src="images/img6.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab7" class="tab-item__btn"><img src="images/img7.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab8" class="tab-item__btn"><img src="images/img8.png" alt=""></a></li>
+					<li class="item tab-item"><a href="#tab9" class="tab-item__btn"><img src="images/img9.png" alt=""></a></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			const tabType3 = function(){
+				const tabNav = document.querySelectorAll(".tab-type3 .tab-item");
+				const tabCont = document.querySelectorAll(".tab-type3 .tab-cont");
+				const tabContBg = document.querySelectorAll(".tab-type3 .tab-cont-bg");
+				let activeCont = "";
+		
+				for(var i = 0; i < tabNav.length; i++){
+					tabNav[i].querySelector(".tab-type3 .tab-item__btn").addEventListener("click",function(e){
+						e.preventDefault();
+		
+						for(var x = 0; x < tabNav.length; x++){
+							tabNav[x].classList.remove("active");
+							tabCont[x].classList.remove("active");
+						}
+						this.parentNode.classList.add("active");
+						activeCont  = this.getAttribute("href");
+						document.querySelector(activeCont).classList.add("active");
+					})
+				}
+			}
+			tabType3();
+		</script>
+	</section>
+
+	<h2>아코디언 | 나머지 메뉴 닫히는</h2>
 	<section class="section acc-type1">
 		<style>
 			.faq__btn {
@@ -394,7 +536,7 @@
 
 
 
-	<!-- 	Swiper Demo [Start] =========================================================	-->
+	<!-- 	[Start]Swiper Demo  =========================================================	-->
 
 	<!-- Link Swiper's CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -741,7 +883,7 @@
 
 	</section>
 
-	<!-- 	Swiper Demo [End] =========================================================	-->
+	<!-- [End]Swiper Demo  =========================================================	-->
 
 	<style>
 		.slide-type1 .container {
