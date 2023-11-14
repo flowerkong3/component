@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>셀렉트박스 변경 이벤트 - 셀렉트박스를 클릭할때마다 바뀌는 옵션</title>
+		
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+			* {margin: 0; padding: 0; list-style:none;}
+			section {
+				border: 3px solid #222;
+				margin: 10px;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+	
+
+		<h2>셀렉트박스 변경 이벤트</h2>
+		<section>
+			<div class="select-text">셀렉트박스 option</div>
+			<select name="" id="select-box" class="select-box" onchange="selectBox()">
+				<option value="option1">옵션1</option>
+				<option value="option2">옵션2</option>
+				<option value="option3">옵션3</option>
+			</select>
+			<script>
+				$(document).ready(function(){
+					$(".select-box").on("change",function(){
+						// alert(this.value);
+						var optionText = $(".select-box option:selected").val(); //선택된 옵션의 value를 변수에 담기
+						// $(".select-text").text(optionText);
+						document.querySelector(".select-text").innerHTML = optionText;
+					})
+				})
+			</script>
+		</section>
+
+		<section>
+			<style>
+				.select-btn {border: 1px solid #ccc;}
+			</style>
+			<div class="select-btn">셀렉트박스 커스텀</div>
+			<div class="select-list">
+				<ul>
+					<li class="select-option">리스트1</li>
+					<li class="select-option">리스트2</li>
+					<li class="select-option">리스트3</li>
+				</ul>
+			</div>
+			<script>
+				$(".select-option").on("click",function(){
+					let value = $(this).text();
+					$(".select-btn").text(value);
+				})
+			</script>
+		</section>
+
+	</body>
+</html>
