@@ -7,8 +7,6 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
     <title>Fruit Information</title>
     <style>
-			
-			
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
@@ -39,6 +37,11 @@
 								$("#downloadButton").hide();
 								$(".inputBox").show();
 								$(".resultText").hide();
+								$(".section").removeClass('red');
+								$("body").removeClass('red');
+
+								stopSnowAnimation()
+								
             });
 
 
@@ -68,30 +71,46 @@
             if(userInput === "김민영") {
                 $("#fruitImage").attr("src", "images/cat1.jpg");
                 $("#fruitText").text("이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요 이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요");
+								
+								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$("#inputButton").hide();
 								$(".inputBox").hide();
 								$(".resultText").show().text("민댕아 사랑해");
+								$(".section").addClass('red');
+								$("body").addClass('red');
+								startSnowAnimation();
+
             } 
 						
 						else if(userInput === "한상연") {
                 $("#fruitImage").attr("src", "images/cat2.jpg");
                 $("#fruitText").text("망댕아 사랑해 내일도 조식해줄게");
+								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$(".inputBox").hide();
 								$(".resultText").show().text("망댕아 사랑해");
+								$(".section").addClass('red');
+								$("body").addClass('red');
+
+								startSnowAnimation();
             } 
 
             else if(userInput === "갸륵") {
                 $("#fruitImage").attr("src", "images/cat4.jpg");
                 $("#fruitText").text("갸륵아 사랑해 동생을 원하니?");
+								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$("#inputButton").hide();
 								$(".inputBox").hide();
 								$(".resultText").show().text("갸륵아 사랑해");
+								$(".section").addClass('red');
+								$("body").addClass('red');
+
+								startSnowAnimation();
             } 
 						else {
                 // 다른 경우에는 기본 이미지와 텍스트 설정 및 안내 메시지 표시
@@ -102,6 +121,7 @@
 
 								$(".inputBox").show();
 								$(".resultText").hide();
+								
 
                 // 애니메이션 후에 클래스 제거
                 setTimeout(function(){
@@ -109,10 +129,51 @@
                 }, 500);
             }
         }
+
+
+
+				// snow
+				function createSnowflake() {
+				const snowflake = $('<div class="snowflake"></div>');
+				const size = Math.random() * 4 + 2 + 'px';
+				snowflake.css({
+					width: size,
+					height: size,
+					left: Math.random() * $(window).width() + 'px'
+				});
+				$('.snow-wrap').append(snowflake);
+				snowflake.animate(
+					{ top: '100vh' },
+					{
+						duration: 5000,
+						easing: 'linear',
+						complete: function() {
+							$(this).remove();
+						}
+					}
+				);
+			}
+	
+			// setInterval(createSnowflake, 200); // 0.2초마다 눈송이 생성
+
+			function startSnowAnimation() {
+      	animationInterval = setInterval(createSnowflake, 200);
+    	}
+
+			function stopSnowAnimation() {
+				clearInterval(animationInterval);
+				$('.snowflake').stop(true, true).remove();
+			}
+
+			$('#stopButton').on('click', stopSnowAnimation);
+
+			// startSnowAnimation(); // 초기에 애니메이션 시작
+
+
     </script>
 </head>
 <body>
-    <div class="section">
+    <div class="name-section section">
 			<div class="container">
 				<div class="resultText">망댕아 사랑해</div>
 				<div class="inputBox">
@@ -121,7 +182,7 @@
 					<div><button id="inputButton">클릭</button></div>
 				</div>
 				<!-- <img src="//source.unsplash.com/500x500/?water" alt=""> -->
-				<img id="fruitImage" src="images/cat3.jpg" alt="과일 이미지">
+				<div class="imgBox"><img id="fruitImage" src="images/cat3.jpg" alt="과일 이미지"></div>
 				<p id="fruitText">입력값에 대한 정보가 없습니다.</p>
 				<div>
 					<button id="downloadButton">이미지 다운로드</button>
@@ -129,23 +190,62 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- snow -->
+		<div class="snow-wrap"></div>
+
+
 </body>
 </html>
 
 <style>
-	body {
-		font-family: 'NanumSquare', sans-serif;
-	}
-	button,input {
-		font-family: 'NanumSquare', sans-serif;
-	}
-	body {
-		/* overflow:hidden; */
-		margin: 0;
-		padding: 0;
+/* snow */
+.snow-wrap {
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	left: 2.5vw;
+	height:100vh;
+	max-width:95vw;
+	width:100%;
+}
+.snowflake {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: falling linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes falling {
+      0% {
+        transform: translateY(-100vh);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+/* //snow */
+
+/* 이름이 무엇인가요? */
+body {
+	font-family: 'NanumSquare', sans-serif;
+	/* overflow:hidden; */
+	margin: 0;
+	padding: 0;
+	background: #222;
+}
+body.red {
+	background: tomato;
+}
+button,input {
+	font-family: 'NanumSquare', sans-serif;
+}
+	a,button {
+		color: #222;
 	}
 	.section {
-		height:100vh;
+		/* height:100vh; */
 		display:flex;
 		align-items: center;
 		justify-content: center;
@@ -159,16 +259,16 @@
 		width:100%;
 		text-align: center;
 	}
+	.container * {
+		position:relative;
+		z-index:10;
+	}
 	.resultText {
 		display:none;
-		font-size: 3rem;
+		font-size: 2.4rem;
 		font-weight:bold;
 	}
-	#fruitImage {
-		max-width:300px; 
-		width:100%;
-		margin-top: 1rem;
-	}
+	
 	.label {
 		font-weight:bold;
 		font-size:2rem;
@@ -177,13 +277,15 @@
 		padding:1rem 0 ;
 	}
 	#inputField {
-		width: 250px;	
+		max-width: 250px;	
+		width:100%;
 		height: 41px;
 		border-radius: 8px;
 		border: none;
 		text-align: center;
 		font-size:1.4rem;
 		background: #ccc;
+		outline: none;
 	}
 	#inputField::placeholder {
 		text-align: center;
@@ -198,5 +300,30 @@
     font-size: 14px;
     font-weight: bold;
 		cursor: pointer;
+
 	}
+	.imgBox {
+		z-index:0;
+		max-width: 287px;
+    height: 388px;
+    width: 100%;
+    background: red;
+    margin: 0 auto;
+    margin-top: 1rem;
+    border-radius: 30px;
+    overflow: hidden;
+	}
+	#fruitImage {
+		/* max-width:300px;  */
+		width:100%;
+		height:100%;
+		object-fit: cover;
+	}
+	.green {color: yellowgreen;}
+	.dark {color: #222;}
+	.bg-light {background-color: beige;}
+	.border2 {border: 2px;}
+	.section.green {background: green;}
+	.section.red {background: tomato;}
+
 </style>
