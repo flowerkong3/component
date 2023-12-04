@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
+    <title>Fruit Information</title>
+    <style>
+			
+			
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        .shake-animation {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#inputButton").click(function(){
+                updateFruitInfo();
+            });
+						// $("#fruitText").text("입력값에 대한 정보가 없습니다.");
+
+						$("#refreshButton").hide()
+            $("#refreshButton").click(function(){
+                // 입력값 초기화 및 기본 이미지와 텍스트로 복원
+								
+                $("#inputField").val("");
+                $("#fruitImage").attr("src", "images/cat3.jpg");
+                $("#fruitText").text("입력값에 대한 정보가 없습니다.");
+								$("#refreshButton").hide();
+								$("#inputButton").show();
+								$("#downloadButton").hide();
+								$(".inputBox").show();
+								$(".resultText").hide();
+            });
+
+
+						$("#downloadButton").hide()
+            $("#downloadButton").click(function(){
+                // 이미지 다운로드
+                var imgSrc = $("#fruitImage").attr("src");
+                var imgLink = document.createElement('a');
+                imgLink.href = imgSrc;
+                imgLink.download = 'fruit_image.jpg';
+                document.body.appendChild(imgLink);
+                imgLink.click();
+                document.body.removeChild(imgLink);
+            });
+
+            // 초기 실행
+            updateFruitInfo();
+        });
+
+				// var appleText = "이것은" +'
+				// '+"사과입니다";
+
+        function updateFruitInfo() {
+            var userInput = $("#inputField").val().toLowerCase();
+            var placeholderText = "김민영, 한상연, 갸륵";
+
+            if(userInput === "김민영") {
+                $("#fruitImage").attr("src", "images/cat1.jpg");
+                $("#fruitText").text("이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요 이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요");
+								$("#refreshButton").show()
+								$("#downloadButton").show()
+								$("#inputButton").hide();
+								$(".inputBox").hide();
+								$(".resultText").show().text("민댕아 사랑해");
+            } 
+						
+						else if(userInput === "한상연") {
+                $("#fruitImage").attr("src", "images/cat2.jpg");
+                $("#fruitText").text("망댕아 사랑해 내일도 조식해줄게");
+								$("#refreshButton").show()
+								$("#downloadButton").show()
+								$(".inputBox").hide();
+								$(".resultText").show().text("망댕아 사랑해");
+            } 
+
+            else if(userInput === "갸륵") {
+                $("#fruitImage").attr("src", "images/cat4.jpg");
+                $("#fruitText").text("갸륵아 사랑해 동생을 원하니?");
+								$("#refreshButton").show()
+								$("#downloadButton").show()
+								$("#inputButton").hide();
+								$(".inputBox").hide();
+								$(".resultText").show().text("갸륵아 사랑해");
+            } 
+						else {
+                // 다른 경우에는 기본 이미지와 텍스트 설정 및 안내 메시지 표시
+                $("#fruitImage").attr("src", "images/cat3.jpg");  //디폴트 이미지
+                // $("#fruitText").text("다시입력해주세요" + placeholderText);
+                // $("#fruitText").text("다시 입력해주세요");
+                $("#inputField").attr("placeholder", placeholderText).addClass("shake-animation");
+
+								$(".inputBox").show();
+								$(".resultText").hide();
+
+                // 애니메이션 후에 클래스 제거
+                setTimeout(function(){
+                    $("#inputField").removeClass("shake-animation");
+                }, 500);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="section">
+			<div class="container">
+				<div class="resultText">망댕아 사랑해</div>
+				<div class="inputBox">
+					<div class="label"><label for="inputField">이름이 무엇인가요?</label></div>
+					<div class="input"><input type="text" id="inputField" placeholder="김민영"></div>
+					<div><button id="inputButton">클릭</button></div>
+				</div>
+				<!-- <img src="//source.unsplash.com/500x500/?water" alt=""> -->
+				<img id="fruitImage" src="images/cat3.jpg" alt="과일 이미지">
+				<p id="fruitText">입력값에 대한 정보가 없습니다.</p>
+				<div>
+					<button id="downloadButton">이미지 다운로드</button>
+					<button id="refreshButton">새로고침</button>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+
+<style>
+	body {
+		font-family: 'NanumSquare', sans-serif;
+	}
+	button,input {
+		font-family: 'NanumSquare', sans-serif;
+	}
+	body {
+		/* overflow:hidden; */
+		margin: 0;
+		padding: 0;
+	}
+	.section {
+		height:100vh;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		/* overflow:hidden; */
+		background: #222;
+		color: #fff;
+		padding: 2rem;
+	}
+	.container {
+		max-width: 500px;
+		width:100%;
+		text-align: center;
+	}
+	.resultText {
+		display:none;
+		font-size: 3rem;
+		font-weight:bold;
+	}
+	#fruitImage {
+		max-width:300px; 
+		width:100%;
+		margin-top: 1rem;
+	}
+	.label {
+		font-weight:bold;
+		font-size:2rem;
+	}
+	.input {
+		padding:1rem 0 ;
+	}
+	#inputField {
+		width: 250px;	
+		height: 41px;
+		border-radius: 8px;
+		border: none;
+		text-align: center;
+		font-size:1.4rem;
+		background: #ccc;
+	}
+	#inputField::placeholder {
+		text-align: center;
+		border: none;
+	}
+	button{
+		/* width: 100px; */
+		padding: 0 30px;
+    height: 41px;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+		cursor: pointer;
+	}
+</style>
