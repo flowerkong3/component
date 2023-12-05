@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
-    <title>Fruit Information</title>
+    <title>아방갸륵</title>
     <style>
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -30,7 +30,7 @@
                 // 입력값 초기화 및 기본 이미지와 텍스트로 복원
 								
                 $("#inputField").val("");
-                $("#fruitImage").attr("src", "images/cat3.jpg");
+                $("#fruitImage").attr("src", "images/cat3.png");
                 $("#fruitText").text("입력값에 대한 정보가 없습니다.");
 								$("#refreshButton").hide();
 								$("#inputButton").show();
@@ -39,6 +39,7 @@
 								$(".resultText").hide();
 								$(".section").removeClass('red');
 								$("body").removeClass('red');
+								$(".imgBox").removeClass('red');
 
 								stopSnowAnimation()
 								
@@ -66,55 +67,58 @@
 
         function updateFruitInfo() {
             var userInput = $("#inputField").val().toLowerCase();
-            var placeholderText = "김민영, 한상연, 갸륵";
+            var placeholderText = "아련갸륵, 하품갸륵, 눈빛갸륵";
 
-            if(userInput === "김민영") {
-                $("#fruitImage").attr("src", "images/cat1.jpg");
-                $("#fruitText").text("이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요 이것은 사과입니다. 줄내림을 하고싶은데 아직 안되네요");
+            if(userInput === "아련갸륵") {
+                $("#fruitImage").attr("src", "images/cat1.png");
+                $("#fruitText").text("츄르 한입만 줄래?");
 								
 								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$("#inputButton").hide();
 								$(".inputBox").hide();
-								$(".resultText").show().text("민댕아 사랑해");
+								$(".resultText").show().text("아련갸륵");
 								$(".section").addClass('red');
 								$("body").addClass('red');
+								$(".imgBox").addClass('red');
 								startSnowAnimation();
 
             } 
 						
-						else if(userInput === "한상연") {
-                $("#fruitImage").attr("src", "images/cat2.jpg");
-                $("#fruitText").text("망댕아 사랑해 내일도 조식해줄게");
+						else if(userInput === "눈빛갸륵") {
+                $("#fruitImage").attr("src", "images/cat2.png");
+                $("#fruitText").text("어이 뭘 쳐다봐");
 								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$(".inputBox").hide();
-								$(".resultText").show().text("망댕아 사랑해");
+								$(".resultText").show().text("눈빛갸륵");
 								$(".section").addClass('red');
 								$("body").addClass('red');
+								$(".imgBox").addClass('red');
 
 								startSnowAnimation();
             } 
 
-            else if(userInput === "갸륵") {
-                $("#fruitImage").attr("src", "images/cat4.jpg");
-                $("#fruitText").text("갸륵아 사랑해 동생을 원하니?");
+            else if(userInput === "하품갸륵") {
+                $("#fruitImage").attr("src", "images/cat3.png");
+                $("#fruitText").text("아이구 졸리다");
 								// 공통
 								$("#refreshButton").show()
 								$("#downloadButton").show()
 								$("#inputButton").hide();
 								$(".inputBox").hide();
-								$(".resultText").show().text("갸륵아 사랑해");
+								$(".resultText").show().text("하품갸륵");
 								$(".section").addClass('red');
 								$("body").addClass('red');
+								$(".imgBox").addClass('red');
 
 								startSnowAnimation();
             } 
 						else {
                 // 다른 경우에는 기본 이미지와 텍스트 설정 및 안내 메시지 표시
-                $("#fruitImage").attr("src", "images/cat3.jpg");  //디폴트 이미지
+                $("#fruitImage").attr("src", "images/cat1.png");  //디폴트 이미지
                 // $("#fruitText").text("다시입력해주세요" + placeholderText);
                 // $("#fruitText").text("다시 입력해주세요");
                 $("#inputField").attr("placeholder", placeholderText).addClass("shake-animation");
@@ -182,7 +186,7 @@
 					<div><button id="inputButton">클릭</button></div>
 				</div>
 				<!-- <img src="//source.unsplash.com/500x500/?water" alt=""> -->
-				<div class="imgBox"><img id="fruitImage" src="images/cat3.jpg" alt="과일 이미지"></div>
+				<div class="imgBox"><img id="fruitImage" src="images/cat3.png" alt="과일 이미지"></div>
 				<p id="fruitText">입력값에 대한 정보가 없습니다.</p>
 				<div>
 					<button id="downloadButton">이미지 다운로드</button>
@@ -233,10 +237,10 @@ body {
 	/* overflow:hidden; */
 	margin: 0;
 	padding: 0;
-	background: #222;
+	background: #000;
 }
 body.red {
-	background: tomato;
+	/* background: tomato; */
 }
 button,input {
 	font-family: 'NanumSquare', sans-serif;
@@ -250,9 +254,9 @@ button,input {
 		align-items: center;
 		justify-content: center;
 		/* overflow:hidden; */
-		background: #222;
+		background: #000;
 		color: #fff;
-		padding: 2rem;
+		padding: 4rem 2rem 2rem;
 	}
 	.container {
 		max-width: 500px;
@@ -277,15 +281,15 @@ button,input {
 		padding:1rem 0 ;
 	}
 	#inputField {
-		max-width: 250px;	
-		width:100%;
-		height: 41px;
-		border-radius: 8px;
-		border: none;
-		text-align: center;
-		font-size:1.4rem;
-		background: #ccc;
-		outline: none;
+		max-width: 289px;
+    width: 100%;
+    height: 41px;
+    border-radius: 19px;
+    border: none;
+    text-align: center;
+    font-size: 1.4rem;
+    background: #ccc;
+    outline: none;
 	}
 	#inputField::placeholder {
 		text-align: center;
@@ -307,9 +311,9 @@ button,input {
 		max-width: 287px;
     height: 388px;
     width: 100%;
-    background: red;
+    background: #000;
     margin: 0 auto;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     border-radius: 30px;
     overflow: hidden;
 	}
@@ -320,10 +324,12 @@ button,input {
 		object-fit: cover;
 	}
 	.green {color: yellowgreen;}
-	.dark {color: #222;}
+	.dark {color: #000;}
 	.bg-light {background-color: beige;}
 	.border2 {border: 2px;}
 	.section.green {background: green;}
-	.section.red {background: tomato;}
+	.section.red {background: #222;}
+	body.red {background: #222;}
+	.imgBox.red {background: #222;}
 
 </style>
