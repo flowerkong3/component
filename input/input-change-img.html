@@ -40,6 +40,7 @@
 								$(".section").removeClass('red');
 								$("body").removeClass('red');
 								$(".imgBox").removeClass('red');
+								$('.kakaotalk').hide();
 
 								stopSnowAnimation()
 								
@@ -51,7 +52,7 @@
                 // 이미지 다운로드
                 var imgSrc = $("#fruitImage").attr("src");
                 var imgLink = document.createElement('a');
-                imgLink.href = imgSrc;
+                imgLink.href = imgSrc;  //링크를 클릭하면 
                 imgLink.download = 'fruit_image.jpg';
                 document.body.appendChild(imgLink);
                 imgLink.click();
@@ -82,6 +83,7 @@
 								$(".section").addClass('red');
 								$("body").addClass('red');
 								$(".imgBox").addClass('red');
+								$('.kakaotalk').show();
 								startSnowAnimation();
 
             } 
@@ -97,6 +99,7 @@
 								$(".section").addClass('red');
 								$("body").addClass('red');
 								$(".imgBox").addClass('red');
+								$('.kakaotalk').show();
 
 								startSnowAnimation();
             } 
@@ -113,6 +116,7 @@
 								$(".section").addClass('red');
 								$("body").addClass('red');
 								$(".imgBox").addClass('red');
+								$('.kakaotalk').show();
 
 								startSnowAnimation();
             } 
@@ -191,6 +195,36 @@
 				<div>
 					<button id="downloadButton">이미지 다운로드</button>
 					<button id="refreshButton">새로고침</button>
+
+					<a href="#n" id="btnKakao" class="kakaotalk" target="_self" title="카카오톡 새창열림"><span class="skip" style="color:red">카카오톡</span></a>
+					<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+					<script>
+						$('.kakaotalk').hide();
+						// 카카오
+									$('#btnKakao').on('click',function(){
+										var thisUrl = document.URL;
+										var snsTitle = "아방갸륵";
+										
+												// 사용할 앱의 JavaScript 키 설정
+												Kakao.init('74878c8a1099ba8a54273a88c61d0628');
+												
+												// 카카오링크 버튼 생성
+												Kakao.Link.createDefaultButton({
+														container: '#btnKakao', // HTML에서 작성한 ID값
+														objectType: 'feed',
+														content: {
+														title: "아방갸륵", // 보여질 제목
+														description: "갸륵이는 고양이", // 보여질 설명
+														imageUrl: thisUrl, // 콘텐츠 URL
+														link: {
+																mobileWebUrl: thisUrl,
+																webUrl: thisUrl
+														}
+														}
+												});
+									})
+										
+					</script>
 				</div>
 			</div>
 		</div>
@@ -295,7 +329,7 @@ button,input {
 		text-align: center;
 		border: none;
 	}
-	button{
+	button {
 		/* width: 100px; */
 		padding: 0 30px;
     height: 41px;
