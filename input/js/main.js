@@ -1,6 +1,38 @@
 $(document).ready(function(){
+	$('#btnKakao').on('click',function(){
+		snsKakao();
+	})
+
+	function snsKakao(){
+		
+		// 카카오
+			// e.preventDefault();
+			var thisUrl = document.URL;
+			var snsTitle = "아방갸륵";
+			 
+					// 사용할 앱의 JavaScript 키 설정
+					Kakao.init('74878c8a1099ba8a54273a88c61d0628');
+					
+					// 카카오링크 버튼 생성
+					Kakao.Share.createDefaultButton({
+							container: '#btnKakao', // HTML에서 작성한 ID값
+							objectType: 'feed',
+							content: {
+							title: "아방갸륵", // 보여질 제목
+							description: "갸륵이는 고양이", // 보여질 설명
+							imageUrl: thisUrl, // 콘텐츠 URL
+							link: {
+									mobileWebUrl: thisUrl,
+									webUrl: thisUrl
+							}
+							}
+					});
+	}
+
 		$(".name-btn").click(function(){
 				updateNameInfo();
+			
+				
 		});
 		// $("#fruitText").text("입력값에 대한 정보가 없습니다.");
 
@@ -46,30 +78,7 @@ $(document).ready(function(){
 		// 	} 
 		// }
 
-			// 카카오
-			$('#btnKakao').on('click',function(){
-				var thisUrl = document.URL;
-				var snsTitle = "아방갸륵";
-				 
-						// 사용할 앱의 JavaScript 키 설정
-						Kakao.init('74878c8a1099ba8a54273a88c61d0628');
-						
-						// 카카오링크 버튼 생성
-						Kakao.Link.createDefaultButton({
-								container: '#btnKakao', // HTML에서 작성한 ID값
-								objectType: 'feed',
-								content: {
-								title: "아방갸륵", // 보여질 제목
-								description: "갸륵이는 고양이", // 보여질 설명
-								imageUrl: thisUrl, // 콘텐츠 URL
-								link: {
-										mobileWebUrl: thisUrl,
-										webUrl: thisUrl
-								}
-								}
-						});
-			})
-				
+
 				 
 			
 
@@ -79,6 +88,7 @@ $(document).ready(function(){
 
 		// 초기 실행
 		updateNameInfo();
+		snsKakao()
 
 	
 
