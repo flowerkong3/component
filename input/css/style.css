@@ -95,6 +95,7 @@ a {
 }
 
 .result-section {
+  display: none;
   height: auto;
   padding: 5rem 0;
 }
