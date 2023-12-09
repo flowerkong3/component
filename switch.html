@@ -1,0 +1,97 @@
+<div class="switch">
+	<input type="checkbox" id="chk1">
+	<label for="chk1">
+		<!-- <span>알람</span> -->
+	</label>
+</div>
+<style>
+	.switch {
+		background: #eee;
+		width: 50px;
+		height:30px;
+		border-radius: 30px;
+		position: relative;
+	}
+	.switch input {
+		display: none;
+	}
+	
+
+	.switch label {
+		display: inline-block;
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		border-radius: 100%;
+		background: #222;
+		left: 3px;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: all 0.3s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.switch label::before {
+		content: "x";
+		color: #fff;
+	}
+	.switch input:checked + label {
+		left: 22px;
+		background: tomato;
+	}
+	.switch input:checked + label::before {
+		content: "v";
+	}
+</style>
+
+
+<div class="ltr-wrap">
+	<div class="ltr ltr1">스크롤 내리면 왼쪽으로 움직이다가 멈춥니다</div>
+	<div class="ltr ltr2">스크롤 내리면 왼쪽으로 움직이다가 멈춥니다</div>
+	<div class="ltr ltr3">스크롤 내리면 왼쪽으로 움직이다가 멈춥니다</div>
+</div>
+<style>
+	body {
+		height:5000px;
+	}
+	.ltr-wrap {overflow:hidden;border:1px solid red; margin-top: 300px;}
+	.ltr {width:max-content;background:tomato;font-size:10vw;}
+	.ltr2 {transform: translateX(0%);}
+</style>
+<script>
+	let scroll = 0;
+	const ltrWrap = document.querySelector('.ltr-wrap');
+	const ltr = document.querySelector('.ltr');
+	const ltr2 = document.querySelector('.ltr2');
+	const ltr3 = document.querySelector('.ltr3');
+	console.log(ltrWrap.offsetTop)
+	window.addEventListener('scroll',()=>{
+		scroll = window.scrollY;
+	
+		let w = (ltr.clientWidth - window.innerWidth) ;
+		let x = (scroll/ (ltr.clientHeight + w))*100
+		// let x2 = (scroll/ (ltr.clientHeight))*100
+		// let x2 = (scroll(ltr.clientWidth - window.innerWidth))*100
+		console.log(scroll)
+		if(scroll > ltrWrap.offsetTop / 2 && scroll < ltrWrap.clientHeight) {
+			ltr.style.transform = `translateX(${-x * 2}%)`;
+			ltr2.style.transform = `translateX(${x * 0.5}%)`;
+			ltr3.style.transform = `translateX(${(scroll / w)*100}%)`
+			// ltr2.style.transform = `translateX(${x2}%)`;
+		}else if (scroll == 0 ){
+			ltr.style.transform = `translateX(${0}%)`;
+			ltr2.style.transform = `translateX(${0}%)`;
+			ltr3.style.transform = `translateX(${0}%)`;
+			// ltr2.style.transform = `translateX(${-50}%)`;
+		}
+		else{
+			// ltr.style.transform = `translateX(${0}%)`;
+		}
+	})
+</script>
+
+
+
+
+
