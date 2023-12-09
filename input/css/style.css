@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "JeonjuCraftGoR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/JeonjuCraftGoR.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +17,22 @@
 }
 
 body {
-  font-family: "NanumSquare", sans-serif;
+  font-family: "Cafe24Ssurround", sans-serif;
+  letter-spacing: -0.5px;
+}
+
+input, button, a {
+  font-family: "Cafe24Ssurround", sans-serif;
+  color: #1B1602;
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .section {
@@ -16,17 +43,104 @@ body {
   text-align: center;
 }
 
+.container {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 2rem;
+}
+
+.name-section {
+  background: linear-gradient(45deg, #1B1F21, #222);
+}
+.name-section .title {
+  padding: 0 0 2rem;
+  font-size: 8vw;
+  color: #fff;
+}
+.name-section .name-input {
+  margin: 1rem 0;
+  border-radius: 50px;
+  font-size: 24px;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #BCC0CC;
+}
+.name-section .name-input::placeholder {
+  color: #BCC0CC;
+}
+.name-section .name-input:focus {
+  outline: 2px solid #F06030;
+}
+.name-section .name-input:focus::placeholder {
+  opacity: 0;
+}
+.name-section .name-btn {
+  border-radius: 50px;
+  font-size: 24px;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  border: none;
+  border: 2px solid #1B1602;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+.name-section .name-btn.color {
+  background-color: #F06030;
+  border: none;
+}
+
 .result-section {
   height: auto;
-  display: none;
+  padding: 5rem 0;
 }
-
-.result-img {
+.result-section h2 {
+  padding: 2rem 0 0;
+  font-size: 3rem;
+}
+.result-section .result-txt {
+  padding: 1rem 0 2rem;
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+.result-section .result-img {
   width: 100%;
+  border-radius: 30px;
+  background: #F06030;
+  object-fit: cover;
+  height: 100%;
 }
 
-.name-btn.color {
-  background: red;
+.btn-download {
+  padding: 0.5rem 1rem;
+  padding-left: 30px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 2px solid #1B1602;
+  background: url(../images/ico_down.svg) no-repeat left 5px center #F06030;
+}
+
+.btn-refresh {
+  padding: 0.5rem 1rem;
+  padding-left: 30px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 2px solid #1B1602;
+  margin: 1rem 0 0;
+  background: url(../images/ico_refresh.svg) no-repeat left 5px center #fff;
+}
+
+.btn-kakaotalk {
+  padding: 0.5rem 1rem;
+  padding-left: 30px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 2px solid #1B1602;
+  background: url(../images/ico_share.svg) no-repeat left 5px center #F06030;
 }
 
 @keyframes shake {

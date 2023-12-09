@@ -143,7 +143,7 @@ function updateNameInfo() {
 				$('.result-section').show();
 				$('.name-section').hide();
 				$('.result-name').text("반가워, 상연");
-				$('.result-txt').text("망댕아 올한해 고마웠어, 영원히 사랑해");
+				$('.result-txt').text("망댕아 올한해 고마웠어, 우리 앞으로도 지금처럼 행복하게 지내자, 영원히 사랑해");
 		} 
 
 		else if(userInput === "김민영") {
@@ -156,7 +156,7 @@ function updateNameInfo() {
 				$('.result-txt').text("민영아 올한해 고마웠어");
 		} 
 		else if(userInput.length === 1) {
-			$('.name-btn').css('background','red')
+			// $('.name-btn').css('background','red')
 		} 
 		else {
 				// 다른 경우에는 기본 이미지와 텍스트 설정 및 안내 메시지 표시
