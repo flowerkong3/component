@@ -92,6 +92,8 @@ p {
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: inset -4px -4px 12px 0px rgba(255, 255, 255, 0.9), inset 4px 4px 12px 0px rgba(187, 195, 206, 0.6);
+  -webkit-box-shadow: inset -4px -4px 12px 0px rgba(255, 255, 255, 0.9), inset 4px 4px 12px 0px rgba(187, 195, 206, 0.6);
+  -webkit-appearance: none;
   border: none;
   color: #90A4AE;
 }
