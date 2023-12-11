@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
+	<title>이름이 무엇인가요?</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="js/main.js"></script>
+
+</head>
+
+<body>
+	<section class="name-section section">
+		<div class="container">
+			<h2 class="title">당신의 이름은<br> 무엇인가요?</h2>
+			<div><input type="text" placeholder="홍길동" class="name-input"></div>
+			<button class="name-btn">확인</button>
+			<p>this is photo card! <br> what's your name?</p>
+		</div>
+	</section>
+	<section class="result-section section">
+		<div class="container container--full">
+			<div><img src="images/cat1.png" alt="갸륵" class="result-img"></div>
+			<h2 class="result-name">반가워, 상연</h2>
+			<div class="result-txt">망댕아 올한해 고마웠어, 우리앞으로도 지금처럼 잘 지내보자 영원히 사랑해</div>
+			<div class="btn-group">
+			<button class="btn-download btn"><span class="hide">이미지 다운로드</span></button>
+			<!-- <button class="btn-share" id="share">
+				링크공유하기
+				
+			</button> -->
+			<a href="#" onclick="return false;" id="btnKakao" class="btn-kakaotalk btn" title="카카오톡 새창열림"><span class="skip hide">카카오톡 공유하기</span></a>
+			<!-- <button id="btnKakao" class="kakaotalk" title="카카오톡 새창열림"><span class="skip">카카오톡</span></button> -->
+			
+
+			<!-- <ul class="sns">
+				<li class="facebook">
+				<a href="#n" onclick="fn_sendFB('facebook');return false;" class="facebook" target="_self" title="페이스북 새창열림"><span class="skip">페이스북</span></a>
+				</li>
+				<li class="twitter">
+				<a href="#n" onclick="fn_sendFB('twitter');return false;" class="twitter" target="_self" title="트위터 새창열림"><span class="skip">트위터</span></a>
+				</li>
+				<li class="band">
+				<a href="#n" onclick="fn_sendFB('band');return false;" class="band" target="_self" title="네이버밴드 새창열림"><span class="skip">네이버밴드</span></a>
+				</li>
+		</ul> -->
+		
+			
+				<button class="btn-refresh btn"><span class="hide">새로고침</span></button>
+			</div>
+		</div>
+	</section>
+
+</body>
+
+</html>
