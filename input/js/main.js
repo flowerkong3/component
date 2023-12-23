@@ -43,7 +43,8 @@ $(document).ready(function(){
 			$(".name-input").val("");
 			$('.name-section').show();
 			$('.result-section').hide();
-			$('.name-btn').removeClass('color');
+			$('.name-btn').removeClass('color');''
+			$('body').css('overflow','hidden');
 			
 		});
 
@@ -135,6 +136,7 @@ function updateNameInfo() {
 				$('.name-section').hide();
 				$('.result-name').text("TO. 길동");
 				$('.result-txt').text("길동아 올한해 고마웠어, 내년에도 잘 부탁해");
+				$('body').css('overflow','auto');
 				
 
 
@@ -148,6 +150,7 @@ function updateNameInfo() {
 				$('.name-section').hide();
 				$('.result-name').text("TO. 상연");
 				$('.result-txt').text("망댕아 올 한해 고생 많았어, 망댕이가 있어서 하루하루 감사함을 느껴요, 앞으로도 건강하고 행복합시다. 알라뷰");
+				$('body').css('overflow','auto');
 		} 
 
 		else if(userInput === "김민영") {
@@ -158,6 +161,7 @@ function updateNameInfo() {
 				$('.name-section').hide();
 				$('.result-name').text("TO. 민영");
 				$('.result-txt').text("민영아 올한해 고마웠어");
+				$('body').css('overflow','auto');
 		} 
 		else if(userInput.length === 1) {
 			// $('.name-btn').css('background','red')
