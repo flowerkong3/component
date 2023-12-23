@@ -105,12 +105,12 @@ p {
 }
 .bg {
 	position: absolute;
-	top: -40%;
+	top: -18%;
 	left: 50%;
 	transform: translateX(-50%);
 }
 .name-section .title {
-	margin: 7rem 0 1.1rem;
+	margin: 12rem 0 1.1rem;
 	padding: 0 0 1rem;
 	font-size: var(--fz-title);
 	color: var(--light);
