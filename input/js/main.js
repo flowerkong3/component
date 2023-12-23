@@ -114,12 +114,16 @@ function updateNameInfo() {
 			let nameInput = $(this).val();
 				// 글자수 1이상이면 버튼색 변경
 				if (nameInput.length >= 1) {
-					$('.name-btn').addClass('color')
+					$('.name-btn').addClass('color');
+					// $('.name-section .name-input').addClass('color');
 				} else {
 					$('.name-btn').removeClass('color')
 				}
-				
-		});
+			});
+		$('.name-btn').focus(function(){
+			$('.name-input').addClass('color');
+			// $('.name-section .name-input').addClass('color');
+		})
 
 
 		if(userInput === "홍길동") {
@@ -129,7 +133,7 @@ function updateNameInfo() {
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
-				$('.result-name').text("반가워, 길동");
+				$('.result-name').text("TO. 길동");
 				$('.result-txt').text("길동아 올한해 고마웠어, 내년에도 잘 부탁해");
 				
 
@@ -142,8 +146,8 @@ function updateNameInfo() {
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
-				$('.result-name').text("반가워, 상연");
-				$('.result-txt').text("망댕아 올한해 고마웠어, 우리 앞으로도 지금처럼 행복하게 지내자, 영원히 사랑해");
+				$('.result-name').text("TO. 상연");
+				$('.result-txt').text("망댕아 올 한해 고생 많았어, 망댕이가 있어서 하루하루 감사함을 느껴요, 앞으로도 건강하고 행복합시다. 알라뷰");
 		} 
 
 		else if(userInput === "김민영") {
@@ -152,7 +156,7 @@ function updateNameInfo() {
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
-				$('.result-name').text("반가워, 민영");
+				$('.result-name').text("TO. 민영");
 				$('.result-txt').text("민영아 올한해 고마웠어");
 		} 
 		else if(userInput.length === 1) {
