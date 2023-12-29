@@ -219,3 +219,16 @@ $('#stopButton').on('click', stopSnowAnimation);
 
 // startSnowAnimation(); // 초기에 애니메이션 시작
 
+
+let scroll = 0;
+window.addEventListener('scroll',function(){
+	scroll = window.scrollY;
+	console.log(scroll);
+	if(scroll > 0){
+		$('.result-section .result-img-wrap').addClass('active');
+		$('.container--full').addClass('active');
+	}else {
+		$('.result-section .result-img-wrap').removeClass('active');
+		$('.container--full').removeClass('active');
+	}
+})
