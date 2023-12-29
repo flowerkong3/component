@@ -47,7 +47,8 @@ a {
 }
 
 p {
-  font-family: "IBM Plex Mono", monospace;
+  /* font-family: "IBM Plex Mono", monospace; */
+	font-family: "Pretendard", sans-serif;
 }
 
 :root {
@@ -57,8 +58,8 @@ p {
 	--light:#F8F8F8;
 	--light50:rgba(255,255,255,50%);
 	--dark:#000000;
-	--fz-title:3.2rem;
-	--fz-basic:2.4rem;
+	--fz-title:2.8rem;
+	--fz-basic:2.2rem;
 	--fz-small:1.6rem;
 	--bdrs1:3.2rem;
 
@@ -120,8 +121,8 @@ p {
 	content: "";
 	background: url(../images/bg_namedeco.svg)no-repeat;
 	position: absolute;
-	left:-8%;
-	top:-105%;
+	left: -3%;
+	top: -110%;
 	width:7.1rem;
 	height: 7.1rem;
 }
@@ -129,7 +130,7 @@ p {
 	content: "";
 	background: url(../images/bg_face.svg)no-repeat;
 	position: absolute;
-	right:-9%;
+	right:-3%;
 	top:-10%;
 	width:4.8rem;
 	height: 3.8rem;
@@ -222,7 +223,7 @@ p {
 	position: relative;
 	max-width: 400px;
 	height:400px;
-	margin: 40px 40px 40px;
+	margin: 40px 50px 40px;
 	background: var(--light);
 	border-radius: 30px;
 	/* padding: 40px; */

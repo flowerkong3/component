@@ -127,40 +127,37 @@ function updateNameInfo() {
 		})
 
 
-		if(userInput === "홍길동") {
-				$(".result-img").attr("src", "images/cat1.png");
+		if(userInput === "임영하") {
+				$(".result-img").attr("src", "images/img3.png");
 				$("#fruitText").text("츄르 한입만 줄래?");
 				
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
-				$('.result-name').text("TO. 길동");
-				$('.result-txt').text("길동아 올한해 고마웠어, 내년에도 잘 부탁해");
+				$('.result-name').text("TO. 영하");
+				$('.result-txt').text("임여사님, 꽃처럼 환하고 이쁜 엄마! 올한해도 고생많았어요~내년에는 이사도 가고 좋은일만 가득할거에요^^ 항상 사랑하고 감사합니다. 건강하세요 ❤");
 				$('body').css('overflow','auto');
-				
-
-
 		} 
 		
 		else if(userInput === "한상연") {
-				$(".result-img").attr("src", "images/cat2.png");
+				$(".result-img").attr("src", "images/img1.png");
 				$("#fruitText").text("어이 뭘 쳐다봐");
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
 				$('.result-name').text("TO. 상연");
-				$('.result-txt').text("망댕아 올 한해 고생 많았어, 망댕이가 있어서 하루하루 감사함을 느껴요, 앞으로도 건강하고 행복합시다. 알라뷰");
+				$('.result-txt').text("브로콜리 한상연! 내가 좋아하는 가수는 브로콜리 너마저🥦 내가 좋아하는 사람은 브로콜리 한상연🥦 브로콜리야 아프지 말고 쑥쑥 자라라❤");
 				$('body').css('overflow','auto');
 		} 
 
-		else if(userInput === "김민영") {
-				$(".result-img").attr("src", "images/cat3.png");
+		else if(userInput === "문슬기") {
+				$(".result-img").attr("src", "images/img2.png");
 				$("#fruitText").text("어이 뭘 쳐다봐");
 				// 공통
 				$('.result-section').show();
 				$('.name-section').hide();
-				$('.result-name').text("TO. 민영");
-				$('.result-txt').text("민영아 올한해 고마웠어");
+				$('.result-name').text("TO. 슬기");
+				$('.result-txt').text("슬기야 안뇽😀 슬기는 참 맑고 밝은 내동생이야 크크, 지금처럼 환한웃음 잃지말아줘 ><슬기는 웃는게 참 이쁘다😁 그럼 내년에도 우리 사이좋게 지내자~알라뷰❤ 우웩");
 				$('body').css('overflow','auto');
 		} 
 		else if(userInput.length === 1) {
