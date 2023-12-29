@@ -95,7 +95,7 @@ p {
 }
 .container--full {
   max-width: 500px;
-  padding: 40px 0px 0px;
+  padding: 0px 0px 0px;
   /* padding: 0; */
   overflow: hidden;
 }
@@ -239,6 +239,7 @@ p {
 }
 
 .deco {
+	display: none;
 	position: absolute;
 	z-index: 1;
 	
