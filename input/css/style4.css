@@ -360,11 +360,10 @@ p {
 
 
 
-/* 로딩시 중간부터 시작해결-> fixed로 상단고정 */
-.container--full {
+/* 로딩시 중간부터 나타남-> fixed로 상단고정 */
+/* .container--full {
 	max-width: 500px;
 	padding: 0px 0px 0px;
-	/* padding: 0; */
 	overflow: hidden;
 	background: var(--primary);
 	width: 100%;
@@ -380,4 +379,4 @@ p {
 }
 .result-section .result-img-wrap.active {
 	position: static;
-}
+} */
