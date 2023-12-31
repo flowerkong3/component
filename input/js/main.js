@@ -160,6 +160,56 @@ function updateNameInfo() {
 				$('.result-txt').text("슬기야 안뇽😀 슬기는 참 맑고 밝은 내동생이야 크크, 지금처럼 환한웃음 잃지말아줘 ><슬기는 웃는게 참 이쁘다😁 그럼 내년에도 우리 사이좋게 지내자~알라뷰❤ 우웩");
 				$('body').css('overflow','auto');
 		} 
+		else if(userInput === "권미현") {
+				$(".result-img").attr("src", "images/img4.png");
+				$("#fruitText").text("어이 뭘 쳐다봐");
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 미현");
+				$('.result-txt').text("미현이 안뇽😀 미현이는 매번 도전하고 성장하는 멋진 친구야! 왠지 먼훗날 건물주가 돼있을것같다 😋 항상 건강하고 내년에는 네가 원하는거 다 이루어질것이다~미현이의 성장을 응원할게 ! 알라뷰❤");
+				$('body').css('overflow','auto');
+		} 
+		else if(userInput === "김수진") {
+				$(".result-img").attr("src", "images/img5.png");
+				$("#fruitText").text("어이 뭘 쳐다봐");
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 수진");
+				$('.result-txt').text("수진이 안뇽😀 수진이는 주변사람들을 웃게 해주는 재밌고 즐거운 친구야!😋 내년에도 이쁜사랑하구 돈 많이벌고 건강하자~ 그리고 곱창에 소주알지?! 알라뷰❤");
+				$('body').css('overflow','auto');
+		} 
+		else if(userInput === "김민기") {
+				$(".result-img").attr("src", "images/img6.png");
+				$("#fruitText").text("어이 뭘 쳐다봐");
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 민기오빠");
+				$('.result-txt').text("민기오빠 안뇽~올 한해 고생많았어, 참 다사다난한 해였다~ 오빠는 멋지고 배려심깊은 사람이야👍 내년에는 더 웃을일 많고 다 잘될거야~ 건강합시다 화이팅😀");
+				$('body').css('overflow','auto');
+		} 
+		else if(userInput === "김현아") {
+				$(".result-img").attr("src", "images/img7.png");
+				$("#fruitText").text("어이 뭘 쳐다봐");
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 현아");
+				$('.result-txt').text("현아야 안뇽😀 현아는 참 똑부러지고 웃음많고 센스있는 친구야! 덕분에 내 대학생활이 즐거웠던것 같아 >< 한식자격증 있는것도 참 대단해 ~ 한식당 차려라! 네가 뭘 하든지 응원할게 친구야 😋내년에도 건강하고 행복합시다 알라뷰❤");
+				$('body').css('overflow','auto');
+		} 
+		else if(userInput === "송윤하") {
+				$(".result-img").attr("src", "images/img8.png");
+				$("#fruitText").text("어이 뭘 쳐다봐");
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 윤하");
+				$('.result-txt').text("윤하야 안뇽😀 윤하는 조근조금 말을 참 잘하고 재밌어 너의 개그가 좋아~고딩때부터 같은대학까지 아무래도 우리 인연인가봐 ㅋㅋ 식단관리 힘들겠지만 건강을 위해서니까 응원할게!😋내년에는 더 행복하고 건강합시다 알라뷰❤");
+				$('body').css('overflow','auto');
+		} 
 		else if(userInput.length === 1) {
 			// $('.name-btn').css('background','red')
 		} 
