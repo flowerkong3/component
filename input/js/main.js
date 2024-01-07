@@ -127,6 +127,17 @@ function updateNameInfo() {
 		})
 
 
+		if(userInput === "홍길동") {
+				$(".result-img").attr("src", "images/img3.png");
+				$("#fruitText").text("츄르 한입만 줄래?");
+				
+				// 공통
+				$('.result-section').show();
+				$('.name-section').hide();
+				$('.result-name').text("TO. 길동");
+				$('.result-txt').text("길동님, 올한해도 고생많았어요~내년에는 좋은일만 가득할거에요^^ 항상 사랑하고 감사합니다. 건강하세요 ❤");
+				$('body').css('overflow','auto');
+		} 
 		if(userInput === "임영하") {
 				$(".result-img").attr("src", "images/img3.png");
 				$("#fruitText").text("츄르 한입만 줄래?");
